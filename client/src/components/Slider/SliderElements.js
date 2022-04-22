@@ -3,17 +3,17 @@ import styled from "styled-components";
 export const Container = styled.div`
   padding-top: 10px;
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   display: flex;
   position: relative;
   overflow: hidden;
-  background-color: #${(props) => props.bg};
+  background-color: ${(props) => props.bg};
 `;
 
 export const Arrow = styled.div`
   width: 50px;
   height: 50px;
-  background-color: #cad2c5;
+  background-color: #f1eee4;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -30,14 +30,14 @@ export const Arrow = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  height: 100%;
+  height: 80%;
   display: flex;
   transform: translateX(${(props) => props.slideIndex * -100}vw);
 `;
 
 export const Slide = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
   display: flex;
   align-items: center;
   background-color: ${(props) => props.bg};
@@ -52,21 +52,22 @@ export const ImgContainer = styled.div`
 `;
 export const InfoContainer = styled.div`
   flex: 1;
-  padding: 50px;
+  padding: 20px;
+  text-align: ${(props) => (props.textStart === true ? "left" : "right")};
 `;
 
 export const Image = styled.img`
-  height: 100%;
+  height: 80%;
 `;
 
 export const Title = styled.h1`
   font-size: 70px;
-  color: #2f3e46;
+  color: #000;
   margin-bottom: 10px;
 `;
 export const Description = styled.p`
   margin: 20px 0px;
-  color: #354f52;
-  font-weight: 500;
-  letter-spacing: 2px;
+  color: #000;
+  font-weight: 400;
+  letter-spacing: 1px;
 `;

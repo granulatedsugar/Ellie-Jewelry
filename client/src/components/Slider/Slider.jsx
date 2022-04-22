@@ -19,10 +19,10 @@ import { styled } from "@mui/material/styles";
 const ColorButton = styled(Button)(({ theme }) => ({
   color: "#2f3e46",
   backgroundColor: "transparent",
-  border: "1px solid #2f3e46",
+  border: "1px solid #000",
   "&:hover": {
-    backgroundColor: "#2f3e46",
-    color: "#cad2c5",
+    backgroundColor: "#000",
+    color: "#fff",
   },
 }));
 
@@ -30,9 +30,9 @@ const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
   const handleClick = (direction) => {
     if (direction === "left") {
-      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
+      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 3);
     } else {
-      setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
+      setSlideIndex(slideIndex < 3 ? slideIndex + 1 : 0);
     }
   };
 
@@ -42,18 +42,32 @@ const Slider = () => {
         <KeyboardArrowLeftRoundedIcon />
       </Arrow>
       <Wrapper slideIndex={slideIndex}>
-        {sliderItems.map((item) => (
-          <Slide bg={item.bg} key={item.id}>
-            <ImgContainer>
-              <Image src={item.img} />
-            </ImgContainer>
-            <InfoContainer>
-              <Title>{item.title}</Title>
-              <Description>{item.description}</Description>
-              <ColorButton>SHOP NOW</ColorButton>
-            </InfoContainer>
-          </Slide>
-        ))}
+        {sliderItems.map((item) => {
+          // Switch columns every slide using imgStart ?
+          return item.imgStart === true ? (
+            <Slide bg={item.bg} key={item.id}>
+              <ImgContainer>
+                <Image src={item.img} />
+              </ImgContainer>
+              <InfoContainer textStart={item.imgStart}>
+                <Title>{item.title}</Title>
+                <Description>{item.description}</Description>
+                <ColorButton>SHOP NOW</ColorButton>
+              </InfoContainer>
+            </Slide>
+          ) : (
+            <Slide bg={item.bg}>
+              <InfoContainer textStart={item.imgStart}>
+                <Title>{item.title}</Title>
+                <Description>{item.description}</Description>
+                <ColorButton>SHOP NOW</ColorButton>
+              </InfoContainer>
+              <ImgContainer>
+                <Image src={item.img} />
+              </ImgContainer>
+            </Slide>
+          );
+        })}
       </Wrapper>
       <Arrow direction="right" onClick={() => handleClick("right")}>
         <KeyboardArrowRightRoundedIcon />
