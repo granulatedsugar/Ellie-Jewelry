@@ -1,5 +1,4 @@
-# Urban-Jewelry
-
+# Ellie-Jewelry
 MERN Stack Jewelry eCommerce Website
 
 -Functional reusable react components
