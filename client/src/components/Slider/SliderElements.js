@@ -1,9 +1,11 @@
+import { Button } from "@mui/material";
+import { styled as StyledMd } from "@mui/material/styles";
 import styled from "styled-components";
 
 export const Container = styled.div`
   padding-top: 10px;
   width: 100%;
-  height: 80vh;
+  height: 60vh;
   display: flex;
   position: relative;
   overflow: hidden;
@@ -30,14 +32,15 @@ export const Arrow = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  height: 80%;
+  height: 60%;
   display: flex;
+  transition: all 1.5s ease;
   transform: translateX(${(props) => props.slideIndex * -100}vw);
 `;
 
 export const Slide = styled.div`
   width: 100vw;
-  height: 80vh;
+  height: 60vh;
   display: flex;
   align-items: center;
   background-color: ${(props) => props.bg};
@@ -63,6 +66,7 @@ export const Image = styled.img`
 export const Title = styled.h1`
   font-size: 70px;
   color: #000;
+  font-family: "Playfair Display", sans-serif;
   margin-bottom: 10px;
 `;
 export const Description = styled.p`
@@ -70,4 +74,17 @@ export const Description = styled.p`
   color: #000;
   font-weight: 400;
   letter-spacing: 1px;
+`;
+
+export const ColorButton = StyledMd(Button)`
+  color: #000;
+  font-family: "Urbanist", sans-serif;
+  background-color: transparent;
+  border: 1px solid #000;
+  border-radius: 0px;
+
+  &:hover {
+    color: #fff;
+    background-color: #000;
+  }
 `;

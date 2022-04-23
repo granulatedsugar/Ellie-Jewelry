@@ -14,12 +14,10 @@ import {
 import SearchRounded from "@mui/icons-material/SearchRounded";
 import Badge from "@mui/material/Badge";
 import LocalMallRoundedIcon from "@mui/icons-material/LocalMallRounded";
-import Announcement from "../Announcement/Announcement";
 
 const Navbar = () => {
   return (
     <Container>
-      <Announcement />
       <Wrapper>
         <Left>
           <Language>EN</Language>

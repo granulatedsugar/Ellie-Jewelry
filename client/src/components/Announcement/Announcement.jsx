@@ -4,8 +4,8 @@ import { Container } from "./AnnouncementElement";
 const Announcement = () => {
   return (
     <Container>
-      Know more about our dedication to provide care for you and your jewelry—a
-      service for a lifetime.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua.
     </Container>
   );
 };

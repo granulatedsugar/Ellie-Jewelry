@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   height: 100px;
+  margin: auto;
   background-color: #fff;
 `;
 
@@ -44,6 +45,8 @@ export const Center = styled.div`
 
 export const Logo = styled.h1`
   font-weight: bold;
+
+  font-family: "Playfair Display", sans-serif;
 `;
 
 // NAVBAR RIGHT + ITEMS

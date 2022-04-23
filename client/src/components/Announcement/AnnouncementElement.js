@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 30px;
-  background-color: #f1eee4;
+  height: 35px;
+  width: 100%;
+  background-color: #000;
   display: flex;
-  color: #000;
+  color: #fff;
   font-size: 14px;
-  font-weight: 600;
+  letter-spacing: 1px;
+  font-weight: 300;
   justify-content: center;
   align-items: center;
 `;

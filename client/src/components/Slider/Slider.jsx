@@ -9,22 +9,11 @@ import {
   Title,
   Description,
   Wrapper,
+  ColorButton,
 } from "./SliderElements";
 import KeyboardArrowLeftRoundedIcon from "@mui/icons-material/KeyboardArrowLeftRounded";
 import KeyboardArrowRightRoundedIcon from "@mui/icons-material/KeyboardArrowRightRounded";
 import { sliderItems } from "../../Data/data";
-import Button from "@mui/material/Button";
-import { styled } from "@mui/material/styles";
-
-const ColorButton = styled(Button)(({ theme }) => ({
-  color: "#2f3e46",
-  backgroundColor: "transparent",
-  border: "1px solid #000",
-  "&:hover": {
-    backgroundColor: "#000",
-    color: "#fff",
-  },
-}));
 
 const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
