@@ -34,6 +34,9 @@ export const SearchContainer = styled.div`
 
 export const Input = styled.input`
   border: none;
+  &:focus {
+    outline: none;
+  }
 `;
 
 // NAVBAR CENTER + ITEMS

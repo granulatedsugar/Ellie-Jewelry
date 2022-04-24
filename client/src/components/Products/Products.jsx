@@ -1,14 +1,14 @@
 import React from "react";
 import { products } from "../../Data/data";
-import SingleProduct from "../SingleProduct/SingleProduct";
-import { Container } from "./ProductElements";
+import Product from "../Product/Product";
+import { Container } from "./ProductsElements";
 import { Badge } from "@mui/material";
 
 const Products = (props) => {
   return (
     <Container>
       {products.map((item) => {
-        return item.id <= 5 ? (
+        return item.id <= 8 && item.popular === true ? (
           <Badge
             sx={{
               "& .MuiBadge-badge": {
@@ -25,7 +25,7 @@ const Products = (props) => {
               horizontal: "left",
             }}
           >
-            <SingleProduct item={item} key={item.id} />
+            <Product item={item} key={item.id} />
           </Badge>
         ) : null;
       })}

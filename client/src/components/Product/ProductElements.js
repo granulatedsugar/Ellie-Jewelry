@@ -18,6 +18,11 @@ export const Info = styled.div`
   cursor: pointer;
 `;
 
+export const Image = styled.img`
+  height: 75%;
+  z-index: 2;
+`;
+
 export const Container = styled.div`
   flex: 1;
   margin: 5px;
@@ -41,11 +46,6 @@ export const Circle = styled.div`
   position: absolute;
 `;
 
-export const Image = styled.img`
-  height: 75%;
-  z-index: 2;
-`;
-
 export const Icon = styled.div`
   width: 40px;
   height: 40px;
@@ -58,7 +58,8 @@ export const Icon = styled.div`
   transition: all 0.5s ease;
   cursor: pointer;
   &:hover {
-    background-color: #f1eee4;
+    background-color: #000;
+    color: #fff;
     transform: scale(1.1);
   }
 `;

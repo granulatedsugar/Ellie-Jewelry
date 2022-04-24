@@ -1,10 +1,10 @@
 import React from "react";
-import { Circle, Container, Icon, Image, Info } from "./SingleProductElements";
+import { Circle, Container, Icon, Image, Info } from "./ProductElements";
 import SearchRounded from "@mui/icons-material/SearchRounded";
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
 
-const SingleProduct = ({ item }) => {
+const Product = ({ item }) => {
   return (
     <Container>
       <Circle />
@@ -24,4 +24,4 @@ const SingleProduct = ({ item }) => {
   );
 };
 
-export default SingleProduct;
+export default Product;
