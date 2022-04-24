@@ -18,7 +18,6 @@ export const ColorButton = StyledMd(Button)`
 
 export const Container = styled.div`
   flex: 1;
-  margin: 3px;
   height: 45vh;
   position: relative;
 `;
