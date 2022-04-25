@@ -12,11 +12,8 @@ import {
   Filter,
   FilterTitle,
   FilterColor,
-  FilterPurity,
-  FilterStone,
-  FilterShape,
-  FilterClarity,
-  FilterCarat,
+  Select,
+  Option,
 } from "./SingleProductElements";
 
 const SingleProduct = () => {
@@ -24,10 +21,10 @@ const SingleProduct = () => {
     <Container>
       <Wrapper>
         <ImgContainer>
-          <Image src="https://media.tiffany.com/is/image/Tiffany/EcomItemL2/tiffany-co-schlumbergeribex-brooch-21000736_1020292_ED.jpg" />
+          <Image src="https://media.tiffany.com/is/image/Tiffany/EcomItemL2/tiffany-true-engagement-ring-with-a-round-brilliant-diamond-68975425_1028237_ED_M.jpg" />
         </ImgContainer>
         <InfoContainer>
-          <Title>Ibex Brooch</Title>
+          <Title>Round Brilliant Diamond</Title>
           <Price>$17,000.00</Price>
           <Description>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore id
@@ -44,41 +41,59 @@ const SingleProduct = () => {
             </Filter>
             <Filter>
               <FilterTitle>Purity</FilterTitle>
-              <FilterPurity>
-                {/* TODO : Filters! */}
-                <PurityOption>10k</PurityOption>
-                <PurityOption>14k</PurityOption>
-                <PurityOption>18k</PurityOption>
-                <PurityOption>24k</PurityOption>
-              </FilterPurity>
+              <Select>
+                <Option disabled selected>
+                  -
+                </Option>
+                <Option>10k</Option>
+                <Option>14k</Option>
+                <Option>18k</Option>
+                <Option>24k</Option>
+              </Select>
             </Filter>
             <Filter>
               <FilterTitle>Stone</FilterTitle>
-              <FilterStone>Diamond</FilterStone>
-              <FilterStone>Signity</FilterStone>
-              <FilterStone>Mossainite</FilterStone>
-              <FilterStone>Lab Diamond</FilterStone>
+              <Select>
+                <Option disabled selected>
+                  -
+                </Option>
+                <Option>Diamond</Option>
+                <Option>Signity</Option>
+                <Option>Mossainite</Option>
+                <Option>Lab Diamond</Option>
+              </Select>
             </Filter>
             <Filter>
               <FilterTitle>Shape</FilterTitle>
-              <FilterShape>Round Brilliant</FilterShape>
-              <FilterShape>Cushion</FilterShape>
-              <FilterShape>Emerald</FilterShape>
-              <FilterShape>Princess</FilterShape>
+              <Select>
+                <Option>-</Option>
+                <Option>Round Brilliant</Option>
+                <Option>Cushion</Option>
+                <Option>Emerald</Option>
+                <Option>Princess</Option>
+              </Select>
             </Filter>
             <Filter>
               <FilterTitle>Clarity</FilterTitle>
-              <FilterClarity>SI-VS</FilterClarity>
-              <FilterClarity>SI</FilterClarity>
-              <FilterClarity>VS</FilterClarity>
-              <FilterClarity>VVS</FilterClarity>
+              <Select>
+                <Option>-</Option>
+                <Option>SI-VS</Option>
+                <Option>SI</Option>
+                <Option>VS</Option>
+                <Option>VVS</Option>
+              </Select>
             </Filter>
             <Filter>
               <FilterTitle>Carat</FilterTitle>
-              <FilterCarat>0.3</FilterCarat>
-              <FilterCarat>0.5</FilterCarat>
-              <FilterCarat>1</FilterCarat>
-              <FilterCarat>2</FilterCarat>
+              <Select>
+                <Option disabled selected>
+                  -
+                </Option>
+                <Option>0.3</Option>
+                <Option>0.5</Option>
+                <Option>1</Option>
+                <Option>2</Option>
+              </Select>
             </Filter>
           </FilterContainer>
         </InfoContainer>

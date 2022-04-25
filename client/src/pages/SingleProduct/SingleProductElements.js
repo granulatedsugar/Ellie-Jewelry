@@ -7,11 +7,12 @@ export const Wrapper = styled.div`
 `;
 export const ImgContainer = styled.div`
   flex: 1;
+  padding: 50px;
 `;
 export const Image = styled.img`
   width: 100%;
-  height: 90vh;
-  object-fit: cover;
+  height: 50vh;
+  object-fit: contain;
 `;
 export const InfoContainer = styled.div`
   flex: 1;
@@ -29,11 +30,14 @@ export const Price = styled.span`
 `;
 
 export const FilterContainer = styled.div``;
-export const Filter = styled.div``;
+export const Filter = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
 export const FilterTitle = styled.span``;
 export const FilterColor = styled.div``;
-export const FilterPurity = styled.div``;
-export const FilterStone = styled.div``;
-export const FilterShape = styled.div``;
-export const FilterClarity = styled.div``;
-export const FilterCarat = styled.div``;
+export const Select = styled.select`
+  border: none;
+`;
+export const Option = styled.option``;
