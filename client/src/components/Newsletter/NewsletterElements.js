@@ -5,6 +5,7 @@ import { styled as StyledMd } from "@mui/material/styles";
 export const Container = styled.div`
   height: 40vh;
   background-color: #000;
+  padding: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
