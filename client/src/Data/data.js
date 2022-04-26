@@ -64,6 +64,7 @@ export const products = [
     color: "rose gold",
     purity: "18k",
     stock: 10,
+    madeToOrder: false,
     description:
       "This bracelet's \"T\" motif emobdies an elegant aesthetic. As multifaceted as it is iconic, the Tiffany T collection is a tangible reminder of the connections we feel but can't always see. Pair this wire bracelet with other Tiffany T designs for a look that's equally modern and sophisticated.",
     category: "Bracelet",
@@ -84,6 +85,7 @@ export const products = [
     color: "rose gold",
     purity: "18k",
     stock: 10,
+    madeToOrder: false,
     description:
       "Simple and elegant, this curved pendant has a modern yet timeless aesthetic. The Tiffany T smile collection embodies the world's most universal gesture for happiness and the connections it creates. Layer this delicate pendant with other Tiffany pendants of varying sizes and lengths for a unique look.",
     category: "Pendant",
@@ -104,6 +106,7 @@ export const products = [
     color: "yellow gold",
     purity: "18k",
     stock: 10,
+    madeToOrder: false,
     description:
       "A modern take on classic diamond studs, the simple design of these earrings takes center stage with hand-polished bezel-set diamonds. Elsa Peretti’s revolutionary Diamonds by the Yard® collection features bezel-set stones that forever changed the role of diamonds in fashion. Wear these diamond studs on their own or mix and match with statement-making drop earrings for a bold look.",
     category: "Earrings",
@@ -124,6 +127,7 @@ export const products = [
     color: "silver",
     purity: null,
     stock: 10,
+    madeToOrder: false,
     description:
       "Tiffany HardWear is elegantly subversive and captures the spirit of the women of NEW York City. This bold necklace is both refined and rebellious.",
     category: "Necklace",
@@ -144,6 +148,7 @@ export const products = [
     color: "yellow gold",
     purity: "18k",
     stock: 10,
+    madeToOrder: false,
     description:
       "The simple, evocative shape of Elsa Peretti® Open Heart designs celebrates the spirit of love. This elegant style is one of her most celebrated icons.",
     category: "Bracelet",
@@ -164,6 +169,7 @@ export const products = [
     color: "white gold",
     purity: "18k",
     stock: 10,
+    madeToOrder: true,
     description:
       "Graphic and geometric with a T-shaped detail in the setting, the Tiffany True® engagement ring is a NEW icon of modern love. With a refined platinum band and a Tiffany True® diamond, a NEW square mixed-cut diamond unique to Tiffany, the Tiffany True® engagement ring features clean lines and striking details.",
     category: "Engagement Ring",
@@ -184,6 +190,7 @@ export const products = [
     color: "yellow gold",
     purity: "18k",
     stock: 10,
+    madeToOrder: false,
     description:
       "Jean Schlumberger’s visionary creations are among the world’s most intricate designs. Inspired by the majestic beauty of the natural world, this 18k yellow gold and platinum brooch is traced with scintillating round brilliant diamonds and a pink sapphire.",
     category: "Brooch",
@@ -203,11 +210,32 @@ export const products = [
     size: null,
     color: "silver",
     purity: null,
+    madeToOrder: false,
     stock: 15,
     description: "Royally appointed. Charm in sterling silver.",
     category: "Charms",
     img: "https://media.tiffany.com/is/image/Tiffany/23457814_927014_ED?$EcomItemMax$&id=sdRqB1&fmt=jpg&fit=constrain,1&wid=860&hei=860&hei=1724&wid=1724&qlt=90&op_usm=2.0,1.0,6.0&$cropN=0.1,0.1,0.8",
     popular: true,
+    state: null,
+    rating: {
+      rate: 6,
+      count: 120,
+    },
+  },
+  {
+    id: 9,
+    product_number: 60011685,
+    title: "Round Brilliant Diamond",
+    price: 250.0,
+    size: [3, 4, 5, 6, 7, 8, 9, 10],
+    color: "silver",
+    purity: null,
+    stock: 15,
+    madeToOrder: true,
+    description: "Royally appointed. Charm in sterling silver.",
+    category: "Charms",
+    img: "https://media.tiffany.com/is/image/Tiffany/EcomItemL2/tiffany-true-engagement-ring-with-a-round-brilliant-diamond-68975425_1028237_ED_M.jpg",
+    popular: false,
     state: null,
     rating: {
       rate: 6,

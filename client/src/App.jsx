@@ -7,6 +7,9 @@ import SingleProduct from "./pages/SingleProduct/SingleProduct";
 import Navbar from "./components/Navbar/Navbar";
 import Newsletter from "./components/Newsletter/Newsletter";
 import Footer from "./components/Footer/Footer";
+import Register from "./pages/Register/Register";
+import Login from "./pages/Login/Login";
+import Cart from "./pages/Cart/Cart";
 
 function App() {
   return (
@@ -16,6 +19,9 @@ function App() {
       {/* <Home /> */}
       {/* <Shop /> */}
       <SingleProduct />
+      {/* <Register /> */}
+      {/* <Login /> */}
+      {/* <Cart /> */}
       <Newsletter />
       <Footer />
     </div>
