@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import { styled as StyledMd } from "@mui/material/styles";
 import styled from "styled-components";
+import { mobile } from "../../Responsive";
 
 export const Container = styled.div``;
 export const Wrapper = styled.div`
@@ -26,6 +27,7 @@ export const Link = styled.a`
 export const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
+  ${mobile({ flexDirection: "column" })}
 `;
 
 export const Info = styled.div`
@@ -68,6 +70,7 @@ export const SummaryItemPrice = styled.span`
 export const Product = styled.div`
   display: flex;
   justify-content: space-between;
+  ${mobile({ flexDirection: "column" })}
 `;
 export const ProductDetail = styled.div`
   flex: 2;

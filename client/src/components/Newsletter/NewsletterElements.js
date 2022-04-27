@@ -1,35 +1,40 @@
 import styled from "styled-components";
 import { Button } from "@mui/material";
 import { styled as StyledMd } from "@mui/material/styles";
+import { mobile } from "../../Responsive";
 
 export const Container = styled.div`
-  height: 40vh;
+  height: 30vh;
   background-color: #000;
   padding: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  ${mobile({ height: "50vh" })}
 `;
 
 export const Title = styled.h1`
   font-size: 70px;
   margin-bottom: 20px;
+  text-align: center;
   color: #fff;
 `;
 export const Description = styled.div`
   font-size: 24px;
   font-weight: 300;
   margin-bottom: 20px;
+  text-align: center;
   color: #fff;
 `;
 export const InputContainer = styled.div`
-  width: 50%;
   height: 40px;
+  width: 50%;
   background-color: #000;
   display: flex;
   justify-content: space-between;
   border: 1px solid #000;
+  ${mobile({ width: "100%" })}
 `;
 export const Input = styled.input`
   border: none;

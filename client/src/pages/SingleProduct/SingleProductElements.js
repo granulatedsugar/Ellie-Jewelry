@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import { Button } from "@mui/material";
 import { styled as StyledMd } from "@mui/material/styles";
+import { mobile } from "../../Responsive";
 
 export const Container = styled.div``;
 export const Wrapper = styled.div`
   padding: 50px;
   display: flex;
+  ${mobile({ flexDirection: "column" })}
 `;
 export const ImgContainer = styled.div`
   flex: 8;
@@ -15,10 +17,12 @@ export const Image = styled.img`
   width: 100%;
   height: 50vh;
   object-fit: contain;
+  ${mobile({ height: "30vh" })}
 `;
 export const InfoContainer = styled.div`
   flex: 4;
   padding: 0px 50px;
+  ${mobile({ padding: "0px 0px", width: "100%" })}
 `;
 export const Title = styled.h1`
   font-weight: 200;

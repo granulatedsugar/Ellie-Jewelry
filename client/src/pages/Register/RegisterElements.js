@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import { styled as StyledMd } from "@mui/material/styles";
 import styled from "styled-components";
+import { mobile } from "../../Responsive";
 
 export const Container = styled.div`
   padding: 50px 0px;
@@ -11,6 +12,7 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
   padding: 20px;
   width: 30%;
+  ${mobile({ width: "100%" })}
 `;
 export const Title = styled.h1`
   font-size: 24px;

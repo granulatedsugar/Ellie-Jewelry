@@ -11,14 +11,11 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  width: ${(props) => (props.mainNav === "main" ? "60%" : "100%")};
+  width: ${(props) => (props.mainNav === "main" ? "60%" : "90%")};
   margin: auto;
   padding: 0px 20px;
   display: flex;
   justify-content: space-between;
-  ${mobile({
-    padding: "10px 0px",
-  })};
 `;
 
 // NAVBAR LEFT + ITEMS
@@ -68,7 +65,7 @@ export const Right = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  ${mobile({ justifyContent: "center", flex: "2" })}
+  ${mobile({ justifyContent: "end" })}
 `;
 
 export const MenuItem = styled.a`

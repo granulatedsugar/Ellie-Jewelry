@@ -16,12 +16,12 @@ function App() {
     <div>
       <Announcement />
       <Navbar />
-      <Home />
+      {/* <Home /> */}
       {/* <Shop /> */}
       {/* <SingleProduct /> */}
       {/* <Register /> */}
       {/* <Login /> */}
-      {/* <Cart /> */}
+      <Cart />
       <Newsletter />
       <Footer />
     </div>
