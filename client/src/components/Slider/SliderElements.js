@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import { styled as StyledMd } from "@mui/material/styles";
 import styled from "styled-components";
+import { mobile } from "../../Responsive";
 
 export const Container = styled.div`
   padding-top: 10px;
@@ -10,6 +11,7 @@ export const Container = styled.div`
   position: relative;
   overflow: hidden;
   background-color: ${(props) => props.bg};
+  ${mobile({ display: "none" })};
 `;
 
 export const Arrow = styled.div`

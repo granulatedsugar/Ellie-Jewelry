@@ -16,9 +16,9 @@ function App() {
     <div>
       <Announcement />
       <Navbar />
-      {/* <Home /> */}
+      <Home />
       {/* <Shop /> */}
-      <SingleProduct />
+      {/* <SingleProduct /> */}
       {/* <Register /> */}
       {/* <Login /> */}
       {/* <Cart /> */}

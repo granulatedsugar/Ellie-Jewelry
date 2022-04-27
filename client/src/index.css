@@ -1,12 +1,10 @@
 body {
   margin: 0;
-  font-family: "Playfair Display", serif;
-  font-family: "Urbanist", sans-serif;
+  font-family: "Jost", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: "Playfair Display", serif;
-  font-family: "Urbanist", sans-serif;
+  font-family: "Jost", sans-serif;
 }
