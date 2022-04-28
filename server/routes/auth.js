@@ -1,21 +1,22 @@
 // Authentication
 import { Router } from "express";
 import User from "../models/user.js";
-import CryptoJS from "crypto-js";
 import dotenv from "dotenv";
+import CryptoJS from "crypto-js";
+import jwt from "jsonwebtoken";
 
 dotenv.config();
-
 const router = Router();
 
 const PASSPHRASE = process.env.PASSPHRASE;
+const JWT_TOKEN = process.env.JWT;
 
 // REGISTER
 router.post("/register", async (req, res) => {
   const newUser = new User({
     username: req.body.username,
     email: req.body.email,
-    password: CryptoJS.AES.encrypt(req.body.password, PASSPHRASE).toString(),
+    password: CryptoJS.AES.encrypt(req.body.password, PASSPHRASE).toString(), // Convert regular pass to hash
   });
 
   try {
@@ -29,17 +30,31 @@ router.post("/register", async (req, res) => {
 //LOGIN
 router.post("/login", async (req, res) => {
   try {
-    const user = await User.findOne({ username: req.body.username });
-    !user && res.status(401).json("Wrong username!");
+    const user = await User.findOne({
+      username: req.body.username,
+    });
 
-    const hash = CryptoJS.AES.decrypt(user.password, PASSPHRASE);
-    const originalPassword = hash.toString(CryptoJS.enc.Utf8);
-    originalPassword !== req.body.password &&
-      res.status(401).json("Wrong password!");
+    !user && res.status(401).json("Wrong User Name");
+
+    const hashedPassword = CryptoJS.AES.decrypt(user.password, JWT_TOKEN); // Convert hash to regular pass
+
+    const originalPassword = hashedPassword.toString(CryptoJS.enc.Utf8);
+
+    const inputPassword = req.body.password;
+
+    originalPassword != inputPassword && res.status(401).json("Wrong Password");
+
+    const accessToken = jwt.sign(
+      {
+        id: user._id,
+        isAdmin: user.isAdmin,
+      },
+      JWT_TOKEN,
+      { expiresIn: "3d" }
+    );
 
     const { password, ...others } = user._doc;
-
-    res.status(200).json(others);
+    res.status(200).json({ ...others, accessToken });
   } catch (err) {
     res.status(500).json(err);
   }
