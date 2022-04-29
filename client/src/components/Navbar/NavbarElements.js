@@ -1,4 +1,3 @@
-import { autocompleteClasses } from "@mui/material";
 import styled from "styled-components";
 import { mobile } from "../../Responsive";
 
