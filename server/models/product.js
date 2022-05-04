@@ -21,7 +21,7 @@ const productSchema = new Schema(
       type: Array,
     },
     metalColor: {
-      type: Boolean,
+      type: String,
     },
     purity: {
       type: Number,

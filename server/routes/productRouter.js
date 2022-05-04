@@ -1,17 +1,8 @@
 import { Router } from "express";
 import Product from "../models/product.js";
-import dotenv from "dotenv";
-import CryptoJS from "crypto-js";
-import {
-  verifyTokenAndAuth,
-  verifyToken,
-  verifyTokenAndAdmin,
-} from "./verifyToken.js";
-
-dotenv.config();
+import { verifyTokenAndAuth, verifyTokenAndAdmin } from "./verifyToken.js";
 
 const router = Router();
-const PASSPHRASE = process.env.PASSPHRASE;
 
 // CREATE Product
 router.post("/", verifyTokenAndAdmin, async (req, res) => {
@@ -26,83 +17,59 @@ router.post("/", verifyTokenAndAdmin, async (req, res) => {
 });
 
 //UPDATE
-router.put("/:id", verifyTokenAndAuth, async (req, res) => {
-  if (req.body.password) {
-    req.body.password = CryptoJS.AES.encrypt(
-      req.body.password,
-      PASSPHRASE
-    ).toString();
-  }
-
+router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
-    const updatedUser = await User.findByIdAndUpdate(
+    const updatedProduct = await Product.findByIdAndUpdate(
       req.params.id,
       {
         $set: req.body,
       },
       { new: true }
     );
-    res.status(200).json(updatedUser);
+    res.status(200).json(updatedProduct);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// DELETE
+// DELETE Product
 router.delete("/:id", verifyTokenAndAuth, async (req, res) => {
   try {
-    await User.findByIdAndDelete(req.params.id);
-    res.status(200).status("User deleted");
+    await Product.findByIdAndDelete(req.params.id);
+    res.status(200).status("Product deleted");
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// GET
-router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
+// GET product
+router.get("/find/:id", async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
-    const { password, ...others } = user._doc;
-    res.status(200).json(others);
+    const product = await Product.findById(req.params.id);
+    res.status(200).json(product);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// GET All USERS
-router.get("/", verifyTokenAndAdmin, async (req, res) => {
-  const query = req.query.new;
+// GET All PRODUCTS
+router.get("/", async (req, res) => {
+  const qNew = req.query.new;
+  const qCategory = req.query.category;
   try {
-    const users = query
-      ? await User.find().sort({ _id: -1 }).limit(5)
-      : await User.find();
-    res.status(200).json(users);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-// GET USER STATUS
-router.get("/stats", verifyTokenAndAdmin, async (req, res) => {
-  const date = new Date();
-  const lastYear = new Date(date.setFullYear(date.getFullYear() - 1)); //last year today
-
-  try {
-    const data = await User.aggregate([
-      { $match: { createdAt: { $gte: lastYear } } },
-      {
-        $project: {
-          month: { $month: "$createdAt" },
+    let products;
+    if (qNew) {
+      products = await Product.find().sort({ createdAt: -1 }).limit(5);
+    } else if (qCategory) {
+      products = await Product.find({
+        category: {
+          $in: [qCategory],
         },
-      },
-      {
-        $group: {
-          _id: "$month",
-          total: { $sum: 1 }, // SUM every registered user
-        },
-      },
-    ]);
-    res.status(200).json(data);
+      });
+    } else {
+      products = await Product.find();
+    }
+    res.status(200).json(products);
   } catch (err) {
     res.status(500).json(err);
   }

@@ -7,7 +7,6 @@ const orderSchema = new Schema(
     userId: {
       type: String,
       required: true,
-      unique: true,
     },
     products: [
       {
@@ -15,12 +14,12 @@ const orderSchema = new Schema(
           type: String,
         },
         quantity: {
-          type: number,
+          type: Number,
           default: 1,
         },
       },
     ],
-    amount: { type: number, required: true },
+    amount: { type: Number, required: true },
     address: { type: Object, required: true },
     status: { type: String, default: "Pending" },
   },

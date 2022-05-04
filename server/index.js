@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRouter from "./routes/userRouter.js";
 import authRouter from "./routes/auth.js";
+import cartRouter from "./routes/cartRouter.js";
+import orderRouter from "./routes/orderRouter.js";
 import productRouter from "./routes/productRouter.js";
 
 dotenv.config();
@@ -27,3 +29,5 @@ app.use(express.json());
 app.use("/auth", authRouter);
 app.use("/users", userRouter);
 app.use("/products", productRouter);
+app.use("/orders", orderRouter);
+app.use("/cart", cartRouter);
