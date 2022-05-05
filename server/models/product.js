@@ -4,6 +4,11 @@ const Schema = mongoose.Schema;
 
 const productSchema = new Schema(
   {
+    productSku: {
+      type: String,
+      required: true,
+      unique: true,
+    },
     title: {
       type: String,
       required: true,
@@ -21,30 +26,34 @@ const productSchema = new Schema(
       type: Array,
     },
     metalColor: {
-      type: String,
+      type: Array,
     },
     purity: {
-      type: Number,
+      type: Array,
     },
     size: {
-      type: Number,
+      type: Array,
     },
     centerStone: {
-      type: String,
+      type: Array,
     },
     clarity: {
-      type: String,
+      type: Array,
     },
     stoneShape: {
-      type: String,
+      type: Array,
     },
     carat: {
-      type: Number,
+      type: Array,
     },
     price: {
       type: Number,
       required: true,
     },
+    popular: { type: Boolean, default: false },
+    state: { type: Array, default: "NEW" },
+    madeToOrder: { type: Boolean, default: true },
+    inStock: { type: Boolean, default: true },
   },
   {
     timestamps: true,

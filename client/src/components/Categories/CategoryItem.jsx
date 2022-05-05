@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import {
   Container,
@@ -11,11 +12,13 @@ import {
 const CategoryItem = ({ item }) => {
   return (
     <Container>
-      <Image src={item.img} />
-      <Info>
-        <Title>{item.title}</Title>
-        <ColorButton>SHOP NOW</ColorButton>
-      </Info>
+      <Link to={`/shop/${item.category}`}>
+        <Image src={item.img} />
+        <Info>
+          <Title>{item.title}</Title>
+          <ColorButton>SHOP NOW</ColorButton>
+        </Info>
+      </Link>
     </Container>
   );
 };

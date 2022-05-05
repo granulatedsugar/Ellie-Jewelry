@@ -41,16 +41,19 @@ export const categories = [
     id: 1,
     img: "https://images.unsplash.com/photo-1599459183200-59c7687a0275?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=989&q=80",
     title: "Necklace & Pendants",
+    category: "Necklace",
   },
   {
     id: 2,
     img: "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
     title: "Rings & Bracelets",
+    category: "Ring",
   },
   {
     id: 3,
     img: "https://images.unsplash.com/photo-1596942515068-0daf9cc4fcac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
     title: "Earrings",
+    category: "Earring",
   },
 ];
 
