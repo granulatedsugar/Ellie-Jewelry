@@ -51,7 +51,7 @@ const productSchema = new Schema(
       required: true,
     },
     popular: { type: Boolean, default: false },
-    state: { type: Array, default: "NEW" },
+    state: { type: String, default: "NEW" },
     madeToOrder: { type: Boolean, default: true },
     inStock: { type: Boolean, default: true },
   },

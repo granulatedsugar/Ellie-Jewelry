@@ -23,7 +23,9 @@ export const Image = styled.img`
   z-index: 2;
 `;
 
-export const Container = styled.div`
+export const Container = styled.div``;
+
+export const Wrapper = styled.div`
   flex: 1;
   margin: 5px;
   min-width: 280px;

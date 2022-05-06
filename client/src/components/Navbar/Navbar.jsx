@@ -61,8 +61,8 @@ const Navbar = () => {
       <Wrapper mainNav="main">
         <MenuItem href="/shop/Diamond">Diamond</MenuItem>
         <MenuItem href="/shop/Necklace">Necklace</MenuItem>
-        <MenuItem href="/shop/Pendant">Pendant</MenuItem>
-        <MenuItem href="/shop/accessories">Accessories</MenuItem>
+        <MenuItem href="/shop/Pendants">Pendants</MenuItem>
+        <MenuItem href="/shop/Bracelets">Bracelets</MenuItem>
         <MenuItem href="/shop/fragrance">Fragrance</MenuItem>
         <MenuItem href="/shop/gifts">Gifts</MenuItem>
       </Wrapper>

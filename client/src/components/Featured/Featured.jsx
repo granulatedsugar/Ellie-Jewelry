@@ -1,14 +1,52 @@
-import React from "react";
-import Products from "../Products/Products";
-import { Container, Title } from "./FeaturedElements";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Container, Title, Wrapper } from "./FeaturedElements";
+import { Badge } from "@mui/material";
+import Product from "../Product/Product";
 
-const FeaturedElements = () => {
+const Featured = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const res = await axios.get("http://localhost:5001/products");
+
+        setProducts(res.data);
+      } catch (err) {}
+    };
+    getProducts();
+  });
+
   return (
     <Container>
       <Title>FEATURED PRODUCTS</Title>
-      <Products />
+      <Wrapper>
+        {products.map((item) => {
+          return item.popular === true ? (
+            <Badge
+              sx={{
+                "& .MuiBadge-badge": {
+                  backgroundColor: "#000",
+                  color: "#fff",
+                  height: 40,
+                  minWidth: 15,
+                  borderRadius: 100,
+                },
+              }}
+              badgeContent={item.state}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+            >
+              <Product item={item} key={item.id} />
+            </Badge>
+          ) : null;
+        })}
+      </Wrapper>
     </Container>
   );
 };
 
-export default FeaturedElements;
+export default Featured;

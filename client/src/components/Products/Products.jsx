@@ -5,8 +5,7 @@ import { Badge } from "@mui/material";
 import axios from "axios";
 
 const Products = ({ cat, filters, sort }) => {
-  console.log(cat, filters, sort);
-  const [products, setProduct] = useState([]);
+  const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
@@ -17,7 +16,7 @@ const Products = ({ cat, filters, sort }) => {
             ? `http://localhost:5001/products?category=${cat}`
             : `http://localhost:5001/products`
         );
-        setProduct(res.data);
+        setProducts(res.data);
       } catch (err) {}
     };
     getProducts();
