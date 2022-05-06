@@ -24,22 +24,22 @@ const DrawerComponent = () => {
           <Logo>ELLIE</Logo>
           <ListItem onClick={() => setOpenDrawer(false)}>
             <ListItemText>
-              <MenuItem to="/">Home</MenuItem>
+              <MenuItem href="/">Home</MenuItem>
             </ListItemText>
           </ListItem>
           <ListItem onClick={() => setOpenDrawer(false)}>
             <ListItemText>
-              <MenuItem to="/">Jewelry</MenuItem>
+              <MenuItem href="/shop/jewelry">Jewelry</MenuItem>
             </ListItemText>
           </ListItem>
           <ListItem onClick={() => setOpenDrawer(false)}>
             <ListItemText>
-              <MenuItem to="/">Watches</MenuItem>
+              <MenuItem href="/shop/watches">Watches</MenuItem>
             </ListItemText>
           </ListItem>
           <ListItem onClick={() => setOpenDrawer(false)}>
             <ListItemText>
-              <MenuItem to="/">Contact</MenuItem>
+              <MenuItem href="/contact">Contact</MenuItem>
             </ListItemText>
           </ListItem>
         </List>

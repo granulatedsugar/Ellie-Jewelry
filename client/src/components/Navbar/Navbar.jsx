@@ -38,7 +38,7 @@ const Navbar = () => {
           </Left>
         )}
         <Center>
-          <Logo>ELLIE</Logo>
+          <Logo href="/">ELLIE</Logo>
         </Center>
         {isMobile ? (
           <Right>
@@ -48,8 +48,8 @@ const Navbar = () => {
           </Right>
         ) : (
           <Right>
-            <MenuItem>REGISTER</MenuItem>
-            <MenuItem>SIGN IN</MenuItem>
+            <MenuItem href="/register">REGISTER</MenuItem>
+            <MenuItem href="login">SIGN IN</MenuItem>
             <MenuItem>
               <Badge badgeContent={4} color="error">
                 <LocalMallRoundedIcon color="action" />
@@ -59,12 +59,12 @@ const Navbar = () => {
         )}
       </Wrapper>
       <Wrapper mainNav="main">
-        <MenuItem>Jewelry</MenuItem>
-        <MenuItem>Love & Engagement</MenuItem>
-        <MenuItem>Watches</MenuItem>
-        <MenuItem>Accessories</MenuItem>
-        <MenuItem>Fragrance</MenuItem>
-        <MenuItem>Gifts</MenuItem>
+        <MenuItem href="/shop/Diamond">Diamond</MenuItem>
+        <MenuItem href="/shop/Necklace">Necklace</MenuItem>
+        <MenuItem href="/shop/Pendant">Pendant</MenuItem>
+        <MenuItem href="/shop/accessories">Accessories</MenuItem>
+        <MenuItem href="/shop/fragrance">Fragrance</MenuItem>
+        <MenuItem href="/shop/gifts">Gifts</MenuItem>
       </Wrapper>
     </Container>
   );

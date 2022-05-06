@@ -3,6 +3,8 @@ import { mobile } from "../../Responsive";
 
 export const MenuItem = styled.a`
   font-size: 14px;
+  color: #000;
+  text-decoration: none;
   cursor: pointer;
   padding: 0px 100px;
 

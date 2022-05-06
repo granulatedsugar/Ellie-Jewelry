@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import Products from "../../components/Products/Products";
 import {
   Container,
@@ -11,29 +12,43 @@ import {
 } from "./ShopElements";
 
 const Shop = () => {
+  const location = useLocation();
+  const cat = location.pathname.split("/")[2];
+  const [filters, setFilters] = useState({});
+  const [sort, setSort] = useState("New");
+
+  const handleFilters = (e) => {
+    const value = e.target.value;
+
+    setFilters({
+      ...filters,
+      [e.target.name]: value,
+    });
+  };
+
   return (
     <Container>
       <Title>SHOP</Title>
       <FilterContainer>
         <Filter>
           <FilterTitle>Filter by:</FilterTitle>
-          <Select>
+          <Select name="category" onChange={handleFilters}>
             <Option disabled selected>
               Type
             </Option>
-            <Option>Necklace & Pendants</Option>
+            <Option>Necklace</Option>
+            <Option>Pendants</Option>
             <Option>Rings</Option>
             <Option>Bracelets</Option>
             <Option>Earrings</Option>
             <Option>Stones</Option>
             <Option>Brooch</Option>
             <Option>Charm</Option>
+            <Option>Diamond</Option>
           </Select>
-          <Select>
-            <Option disabled selected>
-              Metal
-            </Option>
-            <Option>Yellow Gold</Option>
+          <Select name="metal" onChange={handleFilters}>
+            <Option disabled>Metal</Option>
+            <Option>Gold</Option>
             <Option>Rose Gold</Option>
             <Option>White Gold</Option>
             <Option>Silver</Option>
@@ -41,17 +56,15 @@ const Shop = () => {
         </Filter>
         <Filter>
           <FilterTitle>Sort by:</FilterTitle>
-          <Select>
-            <Option disabled selected>
-              New
-            </Option>
-            <Option>Price Low to High</Option>
-            <Option>Price High to Low</Option>
-            <Option>Under $1,000.00</Option>
+          <Select onChange={(e) => setSort(e.target.value)}>
+            <Option value="New">New</Option>
+            <Option value="asc">Price Low to High</Option>
+            <Option value="des">Price High to Low</Option>
+            <Option value="999">Under $1,000.00</Option>
           </Select>
         </Filter>
       </FilterContainer>
-      <Products />
+      <Products cat={cat} filters={filters} sort={sort} />
     </Container>
   );
 };

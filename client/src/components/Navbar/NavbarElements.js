@@ -4,7 +4,7 @@ import { mobile } from "../../Responsive";
 export const Container = styled.div`
   height: 100px;
   margin: auto;
-  padding: 0px 0px 30px 0px;
+  padding: 30px 0px 30px 0px;
   background-color: #fff;
   ${mobile({ height: "50px" })}
 `;
@@ -53,8 +53,11 @@ export const Center = styled.div`
   text-align: center;
 `;
 
-export const Logo = styled.h1`
-  font-weight: 500;
+export const Logo = styled.a`
+  font-weight: 600;
+  font-size: 40px;
+  text-decoration: none;
+  color: #000;
   ${mobile({ fontSize: "24px" })}
 `;
 
@@ -71,6 +74,8 @@ export const MenuItem = styled.a`
   font-size: 14px;
   cursor: pointer;
   margin-left: 25px;
+  text-decoration: none;
+  color: #000;
   ${mobile({ fontSize: "12px", marginLeft: "10px", display: "none" })};
 
   &:after {

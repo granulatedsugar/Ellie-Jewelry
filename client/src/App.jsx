@@ -17,7 +17,7 @@ import Login from "./pages/Login/Login";
 import Cart from "./pages/Cart/Cart";
 
 function App() {
-  const user = true;
+  const user = false;
 
   return (
     <Router>
