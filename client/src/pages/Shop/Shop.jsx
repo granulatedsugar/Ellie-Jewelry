@@ -32,26 +32,21 @@ const Shop = () => {
       <FilterContainer>
         <Filter>
           <FilterTitle>Filter by:</FilterTitle>
-          <Select name="category" onChange={handleFilters}>
-            <Option disabled selected>
-              Type
-            </Option>
-            <Option>Necklace</Option>
-            <Option>Pendants</Option>
-            <Option>Rings</Option>
-            <Option>Bracelets</Option>
-            <Option>Earrings</Option>
-            <Option>Stones</Option>
-            <Option>Brooch</Option>
-            <Option>Charm</Option>
-            <Option>Diamond</Option>
-          </Select>
-          <Select name="metal" onChange={handleFilters}>
+          <Select name="metalColor" onChange={handleFilters}>
             <Option disabled>Metal</Option>
             <Option>Gold</Option>
             <Option>Rose Gold</Option>
             <Option>White Gold</Option>
             <Option>Silver</Option>
+          </Select>
+          <Select name="size" onChange={handleFilters}>
+            <Option disabled selected>
+              Ring Size
+            </Option>
+            <Option>3</Option>
+            <Option>4</Option>
+            <Option>5</Option>
+            <Option>6</Option>
           </Select>
         </Filter>
         <Filter>

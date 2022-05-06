@@ -6,6 +6,7 @@ import authRouter from "./routes/auth.js";
 import cartRouter from "./routes/cartRouter.js";
 import orderRouter from "./routes/orderRouter.js";
 import productRouter from "./routes/productRouter.js";
+import cors from "cors";
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ mongoose
   });
 
 app.use(express.json());
+app.use(cors());
 
 app.use("/auth", authRouter);
 app.use("/users", userRouter);

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { products } from "../../Data/data";
 import Product from "../Product/Product";
 import { Container } from "./ProductsElements";
 import { Badge } from "@mui/material";
@@ -7,7 +6,7 @@ import axios from "axios";
 
 const Products = ({ cat, filters, sort }) => {
   console.log(cat, filters, sort);
-  const [product, setProduct] = useState([]);
+  const [products, setProduct] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
@@ -27,38 +26,36 @@ const Products = ({ cat, filters, sort }) => {
   useEffect(() => {
     cat &&
       setFilteredProducts(
-        product.filter((item) =>
+        products.filter((item) =>
           Object.entries(filters).every(([key, value]) =>
             item[key].includes(value)
           )
         )
       );
-  }, [product, cat, filters]);
+  }, [products, cat, filters]);
 
   return (
     <Container>
-      {filteredProducts.map((item) => {
-        return item.id <= 8 && item.popular === true ? (
-          <Badge
-            sx={{
-              "& .MuiBadge-badge": {
-                backgroundColor: "#000",
-                color: "#fff",
-                height: 40,
-                minWidth: 15,
-                borderRadius: 100,
-              },
-            }}
-            badgeContent={item.state}
-            anchorOrigin={{
-              vertical: "top",
-              horizontal: "left",
-            }}
-          >
-            <Product item={item} key={item.id} />
-          </Badge>
-        ) : null;
-      })}
+      {filteredProducts.map((item) => (
+        <Badge
+          sx={{
+            "& .MuiBadge-badge": {
+              backgroundColor: "#000",
+              color: "#fff",
+              height: 40,
+              minWidth: 15,
+              borderRadius: 100,
+            },
+          }}
+          badgeContent={item.state}
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "left",
+          }}
+        >
+          <Product item={item} key={item.id} />
+        </Badge>
+      ))}
     </Container>
   );
 };
