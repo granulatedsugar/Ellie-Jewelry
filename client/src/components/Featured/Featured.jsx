@@ -21,6 +21,7 @@ const Featured = () => {
   return (
     <Container>
       <Title>FEATURED PRODUCTS</Title>
+
       <Wrapper>
         {products.map((item) => {
           return item.popular ? (

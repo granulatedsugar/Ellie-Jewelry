@@ -22,11 +22,11 @@ const Product = ({ item }) => {
           <Icon>
             <LocalMallOutlinedIcon />
           </Icon>
-          <Icon>
-            <Link to={`/product/${item._id}`}>
+          <Link to={`/product/${item._id}`}>
+            <Icon>
               <SearchRounded />
-            </Link>
-          </Icon>
+            </Icon>
+          </Link>
           <Icon>
             <FavoriteBorderRoundedIcon />
           </Icon>

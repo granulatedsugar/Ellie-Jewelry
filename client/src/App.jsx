@@ -15,6 +15,7 @@ import Footer from "./components/Footer/Footer";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 import Cart from "./pages/Cart/Cart";
+import ScrollToTop from "./ScrollToTop";
 
 function App() {
   const user = false;
@@ -23,6 +24,7 @@ function App() {
     <Router>
       <Announcement />
       <Navbar />
+      <ScrollToTop />
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/shop/:category" element={<Shop />} />

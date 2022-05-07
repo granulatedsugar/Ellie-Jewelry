@@ -50,6 +50,120 @@ const SingleProduct = () => {
     currency: "USD",
   });
 
+  const ReadyMade = () => {
+    return (
+      <>
+        <Filter>
+          <FilterTitle>Metal Color</FilterTitle>
+          {product.metalColor?.map((c) => (
+            <FilterColor color={c} key={c} />
+          ))}
+        </Filter>
+        <Filter>
+          <FilterTitle>Purity</FilterTitle>
+          <Select>
+            <Option disabled selected>
+              Select
+            </Option>
+            {product.purity?.map((p) => (
+              <Option>{p}</Option>
+            ))}
+          </Select>
+        </Filter>
+        <Filter>
+          <FilterTitle>Size</FilterTitle>
+          <Select>
+            <Option disabled selected>
+              Select
+            </Option>
+            {product.size?.map((size) => (
+              <Option>{size}</Option>
+            ))}
+          </Select>
+        </Filter>
+      </>
+    );
+  };
+
+  const CustomMade = () => {
+    return (
+      <>
+        <Filter>
+          <FilterTitle>Metal Color</FilterTitle>
+          {product.metalColor?.map((c) => (
+            <FilterColor color={c} key={c} />
+          ))}
+        </Filter>
+        <Filter>
+          <FilterTitle>Purity</FilterTitle>
+          <Select>
+            <Option disabled selected>
+              Select
+            </Option>
+            {product.purity?.map((p) => (
+              <Option>{p}</Option>
+            ))}
+          </Select>
+        </Filter>
+        <Filter>
+          <FilterTitle>Stone</FilterTitle>
+          <Select>
+            <Option disabled selected>
+              Select
+            </Option>
+            {product.centerStone?.map((cs) => (
+              <Option>{cs}</Option>
+            ))}
+          </Select>
+        </Filter>
+        <Filter>
+          <FilterTitle>Shape</FilterTitle>
+          <Select>
+            <Option disabled selected>
+              Select
+            </Option>
+            {product.stoneShape?.map((sh) => (
+              <Option>{sh}</Option>
+            ))}
+          </Select>
+        </Filter>
+        <Filter>
+          <FilterTitle>Clarity</FilterTitle>
+          <Select>
+            <Option disabled selected>
+              Select
+            </Option>
+            {product.clarity?.map((cl) => (
+              <Option>{cl}</Option>
+            ))}
+          </Select>
+        </Filter>
+        <Filter>
+          <FilterTitle>Carat</FilterTitle>
+          <Select>
+            <Option disabled selected>
+              Select
+            </Option>
+            {product.carat?.map((cr) => (
+              <Option>{cr}</Option>
+            ))}
+          </Select>
+        </Filter>
+        <Filter>
+          <FilterTitle>Size</FilterTitle>
+          <Select>
+            <Option disabled selected>
+              Select
+            </Option>
+            {product.size?.map((size) => (
+              <Option>{size}</Option>
+            ))}
+          </Select>
+        </Filter>
+      </>
+    );
+  };
+
   return (
     <Container>
       <Wrapper>
@@ -84,73 +198,7 @@ const SingleProduct = () => {
             {product.madeToOrder ? "Made to Order" : "Ready Made"}
           </MfgType>
           <FilterContainer>
-            <Filter>
-              <FilterTitle>Metal Color</FilterTitle>
-              {product.metalColor?.map((c) => (
-                <FilterColor color={c} key={c} />
-              ))}
-            </Filter>
-            <Filter>
-              <FilterTitle>Purity</FilterTitle>
-              <Select>
-                <Option disabled selected>
-                  Select
-                </Option>
-                {product.purity?.map((p) => (
-                  <Option>{p}</Option>
-                ))}
-              </Select>
-            </Filter>
-            <Filter>
-              <FilterTitle>Stone</FilterTitle>
-              <Select>
-                <Option disabled selected></Option>
-                <Option>Diamond</Option>
-                <Option>Signity</Option>
-                <Option>Mossainite</Option>
-                <Option>Lab Diamond</Option>
-              </Select>
-            </Filter>
-            <Filter>
-              <FilterTitle>Shape</FilterTitle>
-              <Select>
-                <Option></Option>
-                <Option>Round Brilliant</Option>
-                <Option>Cushion</Option>
-                <Option>Emerald</Option>
-                <Option>Princess</Option>
-              </Select>
-            </Filter>
-            <Filter>
-              <FilterTitle>Clarity</FilterTitle>
-              <Select>
-                <Option></Option>
-                <Option>SI-VS</Option>
-                <Option>SI</Option>
-                <Option>VS</Option>
-                <Option>VVS</Option>
-              </Select>
-            </Filter>
-            <Filter>
-              <FilterTitle>Carat</FilterTitle>
-              <Select>
-                <Option disabled selected></Option>
-                <Option>0.3</Option>
-                <Option>0.5</Option>
-                <Option>1</Option>
-                <Option>2</Option>
-              </Select>
-            </Filter>
-            <Filter>
-              <FilterTitle>Ring Size</FilterTitle>
-              <Select>
-                <Option disabled selected></Option>
-                <Option>3</Option>
-                <Option>4</Option>
-                <Option>5</Option>
-                <Option>6</Option>
-              </Select>
-            </Filter>
+            {product.madeToOrder ? <CustomMade /> : <ReadyMade />}
           </FilterContainer>
           <AddContainer>
             <FilterTitle>Quantity</FilterTitle>

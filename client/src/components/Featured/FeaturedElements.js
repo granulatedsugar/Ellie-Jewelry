@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  padding: 50px;
-`;
+export const Container = styled.div``;
 
 export const Wrapper = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  padding: 50px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
   justify-content: center;
 `;
 export const Title = styled.h1`
