@@ -10,6 +10,7 @@ import {
 import SearchRounded from "@mui/icons-material/SearchRounded";
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
+import { Link } from "react-router-dom";
 
 const Product = ({ item }) => {
   return (
@@ -22,7 +23,9 @@ const Product = ({ item }) => {
             <LocalMallOutlinedIcon />
           </Icon>
           <Icon>
-            <SearchRounded />
+            <Link to={`/product/${item._id}`}>
+              <SearchRounded />
+            </Link>
           </Icon>
           <Icon>
             <FavoriteBorderRoundedIcon />

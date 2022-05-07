@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Container,
   Wrapper,
@@ -26,13 +26,35 @@ import { Typography, Breadcrumbs } from "@mui/material";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
+import { useLocation } from "react-router-dom";
+import { publicRequest } from "../../requestMethods";
 
 const SingleProduct = () => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+
+  const [product, setProduct] = useState({});
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await publicRequest.get("/products/find/" + id);
+        setProduct(res.data);
+      } catch {}
+    };
+    getProduct();
+  }, [id]);
+
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+
   return (
     <Container>
       <Wrapper>
         <ImgContainer>
-          <Image src="https://media.tiffany.com/is/image/Tiffany/EcomItemL2/tiffany-true-engagement-ring-with-a-round-brilliant-diamond-68975425_1028237_ED_M.jpg" />
+          <Image src={product.img} />
         </ImgContainer>
         <InfoContainer>
           <Breadcrumbs aria-label="breadcrumb" style={{ fontSize: "9px" }}>
@@ -52,20 +74,21 @@ const SingleProduct = () => {
             >
               Designer Jewelry
             </Typography>
-            <Typography color="text.primary" style={{ fontSize: "9px" }}>
-              Rings
-            </Typography>
+            <Typography
+              color="text.primary"
+              style={{ fontSize: "9px" }}
+            ></Typography>
           </Breadcrumbs>
-          <Title>Round Brilliant Diamond</Title>
+          <Title>{product.title}</Title>
           <MfgType>
             <FavoriteBorderOutlinedIcon /> Made to Order
           </MfgType>
           <FilterContainer>
             <Filter>
               <FilterTitle>Metal Color</FilterTitle>
-              <FilterColor color="#F7F7F7" />
-              <FilterColor color="#d4af37" />
-              <FilterColor color="#CBA3B2" />
+              {product.metalColor?.map((c) => (
+                <FilterColor color={c} key={c} />
+              ))}
             </Filter>
             <Filter>
               <FilterTitle>Purity</FilterTitle>
@@ -138,16 +161,11 @@ const SingleProduct = () => {
           </AddContainer>
           <PriceContainer>
             <FilterTitle>Total Price</FilterTitle>
-            <Price>$17,000.00</Price>
+            <Price>{formatter.format(product.price)}</Price>
           </PriceContainer>
           <ColorButton>BUY NOW</ColorButton>
           <ColorButton>ADD TO BAG</ColorButton>
-          <Description>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore id
-            non voluptatibus maxime molestiae aliquam distinctio enim tempora
-            possimus rerum error, quaerat nulla, natus dolores nemo accusantium
-            placeat? Ad, perferendis?
-          </Description>
+          <Description>{product.desc}</Description>
         </InfoContainer>
       </Wrapper>
       <Featured />

@@ -10,20 +10,21 @@ import {
   Option,
   Select,
   Title,
+  CustomPaper as Paper,
+  CustomMenuList as MenuList,
+  CustomRadio as Radio,
+  CustomPopper as Popper,
+  CustomFormLabel as FormLabel,
+  CustomFormControlLabel as FormControlLabel,
+  CustomTypography as Typography,
 } from "./ShopElements";
-import ClickAwayListener from "@mui/material/ClickAwayListener";
-import Grow from "@mui/material/Grow";
-import Paper from "@mui/material/Paper";
-import Popper from "@mui/material/Popper";
-import MenuList from "@mui/material/MenuList";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import {
+  ClickAwayListener,
+  Grow,
   FormControl,
-  Radio,
   RadioGroup,
-  FormControlLabel,
-  FormLabel,
 } from "@mui/material";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 const Shop = () => {
   const location = useLocation();
@@ -79,7 +80,7 @@ const Shop = () => {
             aria-haspopup="true"
             onClick={handleToggle}
           >
-            Select Filters <KeyboardArrowDownIcon />
+            Select Filters <KeyboardArrowDownIcon sx={{ fontSize: "18px" }} />
           </ColorButton>
           <Popper
             open={open}
@@ -88,10 +89,6 @@ const Shop = () => {
             placement="bottom-start"
             transition
             disablePortal
-            style={{
-              zIndex: "5",
-              minWidth: "100%",
-            }}
           >
             {({ TransitionProps, placement }) => (
               <Grow
@@ -101,22 +98,13 @@ const Shop = () => {
                     placement === "bottom-start" ? "left top" : "left bottom",
                 }}
               >
-                <Paper
-                  sx={{
-                    minWidth: "120px",
-                  }}
-                >
+                <Paper>
                   <ClickAwayListener onClickAway={handleClose}>
                     <MenuList
                       autoFocusItem={open}
                       id="composition-menu"
                       aria-labelledby="composition-button"
                       onChange={handleFilters}
-                      sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        padding: "100px",
-                      }}
                     >
                       <Container>
                         <FormControl>
@@ -130,15 +118,7 @@ const Shop = () => {
                           >
                             <FormControlLabel
                               value="10"
-                              control={
-                                <Radio
-                                  sx={{
-                                    color: "#000",
-                                    "&.Mui-checked": { color: "#000" },
-                                    borderRadius: "0px",
-                                  }}
-                                />
-                              }
+                              control={<Radio />}
                               label="10"
                             />
                             <FormControlLabel
@@ -166,25 +146,18 @@ const Shop = () => {
                           >
                             <FormControlLabel
                               value="Yellow Gold"
-                              control={
-                                <Radio
-                                  sx={{
-                                    color: "#000",
-                                    "&.Mui-checked": { color: "#000" },
-                                  }}
-                                />
-                              }
-                              label="Yellow Gold"
+                              control={<Radio />}
+                              label={<Typography>Yellow Gold</Typography>}
                             />
                             <FormControlLabel
                               value="Rose Gold"
                               control={<Radio />}
-                              label="Rose Gold"
+                              label={<Typography>Rose Gold</Typography>}
                             />
                             <FormControlLabel
                               value="White Gold"
                               control={<Radio />}
-                              label="White Gold"
+                              label={<Typography>White Gold</Typography>}
                             />
                           </RadioGroup>
                         </FormControl>
