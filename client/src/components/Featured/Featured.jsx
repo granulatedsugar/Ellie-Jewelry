@@ -23,7 +23,7 @@ const Featured = () => {
       <Title>FEATURED PRODUCTS</Title>
       <Wrapper>
         {products.map((item) => {
-          return item.popular === true ? (
+          return item.popular ? (
             <Badge
               sx={{
                 "& .MuiBadge-badge": {
@@ -34,7 +34,7 @@ const Featured = () => {
                   borderRadius: 100,
                 },
               }}
-              badgeContent={item.state}
+              badgeContent={item.state ? "NEW" : null}
               anchorOrigin={{
                 vertical: "top",
                 horizontal: "left",

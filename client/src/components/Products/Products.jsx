@@ -46,7 +46,7 @@ const Products = ({ cat, filters, sort }) => {
               borderRadius: 100,
             },
           }}
-          badgeContent={item.state}
+          badgeContent={item.state ? "NEW" : null}
           anchorOrigin={{
             vertical: "top",
             horizontal: "left",

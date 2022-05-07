@@ -27,6 +27,7 @@ const productSchema = new Schema(
     },
     metalColor: {
       type: Array,
+      default: ["#F7F7F7", "#d4af37", "#CBA3B2"],
     },
     purity: {
       type: Array,
@@ -51,7 +52,7 @@ const productSchema = new Schema(
       required: true,
     },
     popular: { type: Boolean, default: false },
-    state: { type: String, default: "NEW" },
+    state: { type: Boolean, default: true },
     madeToOrder: { type: Boolean, default: true },
     inStock: { type: Boolean, default: true },
   },

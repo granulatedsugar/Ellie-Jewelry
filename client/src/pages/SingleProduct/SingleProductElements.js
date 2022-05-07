@@ -48,15 +48,18 @@ export const FilterContainer = styled.div`
   border-top: 1px solid #000;
   padding: 10px 0px;
 `;
+
 export const Filter = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
 `;
+
 export const FilterTitle = styled.span`
   font-size: 14px;
   font-weight: 600;
 `;
+
 export const FilterColor = styled.div`
   min-width: 40px;
   min-height: 40px;
@@ -64,6 +67,7 @@ export const FilterColor = styled.div`
   background-color: ${(props) => props.color};
   border: 1px solid #fff;
   margin: 0px;
+  direction: rtl;
   cursor: pointer;
   &:active {
     border: 0.5px solid #000;

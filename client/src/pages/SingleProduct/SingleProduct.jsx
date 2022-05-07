@@ -74,14 +74,14 @@ const SingleProduct = () => {
             >
               Designer Jewelry
             </Typography>
-            <Typography
-              color="text.primary"
-              style={{ fontSize: "9px" }}
-            ></Typography>
+            <Typography color="text.primary" style={{ fontSize: "9px" }}>
+              {product.category?.[0]}
+            </Typography>
           </Breadcrumbs>
           <Title>{product.title}</Title>
           <MfgType>
-            <FavoriteBorderOutlinedIcon /> Made to Order
+            <FavoriteBorderOutlinedIcon />{" "}
+            {product.madeToOrder ? "Made to Order" : "Ready Made"}
           </MfgType>
           <FilterContainer>
             <Filter>
@@ -93,11 +93,12 @@ const SingleProduct = () => {
             <Filter>
               <FilterTitle>Purity</FilterTitle>
               <Select>
-                <Option disabled selected></Option>
-                <Option>10k</Option>
-                <Option>14k</Option>
-                <Option>18k</Option>
-                <Option>24k</Option>
+                <Option disabled selected>
+                  Select
+                </Option>
+                {product.purity?.map((p) => (
+                  <Option>{p}</Option>
+                ))}
               </Select>
             </Filter>
             <Filter>
