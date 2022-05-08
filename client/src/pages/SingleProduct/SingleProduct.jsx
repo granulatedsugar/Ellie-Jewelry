@@ -72,14 +72,14 @@ const SingleProduct = () => {
 
   // Metal Calc
   const goldPrice = 3500;
-  const grams = 4;
+  const grams = product.grams;
   const initialPurity = purity / 24;
   const totalPurity = initialPurity * goldPrice * grams * 1.15;
 
   // Extras
-  const labor = 2000;
-  const markup = 0.45;
-  const packaging = 1750;
+  const labor = product.labor;
+  const markup = product.markup / 100;
+  const packaging = product.packaging;
 
   // StoneCalc
   const stone = Number(carat) * 1 * 60000;
@@ -100,12 +100,13 @@ const SingleProduct = () => {
         stoneShape,
         clarity,
         carat,
-        totals,
+        roundedTotal,
       })
     );
   };
 
   const totals = markedUp * quantity;
+  const roundedTotal = Number(totals.toFixed(2));
 
   return (
     <Container>
@@ -275,13 +276,14 @@ const SingleProduct = () => {
             <FilterTitle>Total Price</FilterTitle>
             <Price>{formatter.format(markedUp * quantity)}</Price>
           </PriceContainer>
-          {(!product.madeToOrder && !metalColor) ||
-          !purity ||
-          !size ||
-          !centerStone ||
-          !stoneShape ||
-          !clarity ||
-          !carat ? (
+          {product.madeToOrder &&
+          (!metalColor ||
+            !purity ||
+            !size ||
+            !centerStone ||
+            !stoneShape ||
+            !clarity ||
+            !carat) ? (
             <>
               <ColorButton disabled sx={{ backgroundColor: "#fffefe" }}>
                 BUY NOW

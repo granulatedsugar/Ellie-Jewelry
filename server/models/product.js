@@ -38,23 +38,18 @@ const productSchema = new Schema(
     centerStone: {
       type: Array,
     },
-    clarity: {
-      type: Array,
-    },
-    stoneShape: {
-      type: Array,
-    },
-    carat: {
-      type: Array,
-    },
-    price: {
-      type: Number,
-      required: true,
-    },
+    clarity: { type: Array },
+    stoneShape: { type: Array },
+    carat: { type: Array },
+    price: { type: Number, required: true },
     popular: { type: Boolean, default: false },
     state: { type: Boolean, default: true },
     madeToOrder: { type: Boolean, default: true },
     inStock: { type: Boolean, default: true },
+    labor: { type: Number, default: 0 },
+    markup: { type: [Number], default: 0 },
+    packaging: { type: Number, default: 0 },
+    grams: { type: [Number] },
   },
   {
     timestamps: true,
