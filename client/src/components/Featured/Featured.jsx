@@ -40,6 +40,7 @@ const Featured = () => {
                 vertical: "top",
                 horizontal: "left",
               }}
+              key={item._id}
             >
               <Product item={item} key={item.id} />
             </Badge>

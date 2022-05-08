@@ -16,10 +16,12 @@ import Badge from "@mui/material/Badge";
 import LocalMallRoundedIcon from "@mui/icons-material/LocalMallRounded";
 import DrawerComponent from "../Drawer/Drawer";
 import { useTheme, useMediaQuery } from "@mui/material";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const quantity = useSelector((state) => state.cart.quantity);
 
   return (
     <Container>
@@ -42,7 +44,7 @@ const Navbar = () => {
         </Center>
         {isMobile ? (
           <Right>
-            <Badge badgeContent={4} color="error">
+            <Badge badgeContent={quantity} color="error">
               <LocalMallRoundedIcon color="action" />
             </Badge>
           </Right>
@@ -51,7 +53,7 @@ const Navbar = () => {
             <MenuItem href="/register">REGISTER</MenuItem>
             <MenuItem href="login">SIGN IN</MenuItem>
             <MenuItem>
-              <Badge badgeContent={4} color="error">
+              <Badge badgeContent={quantity} color="error">
                 <LocalMallRoundedIcon color="action" />
               </Badge>
             </MenuItem>

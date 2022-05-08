@@ -51,6 +51,7 @@ const Products = ({ cat, filters, sort }) => {
             vertical: "top",
             horizontal: "left",
           }}
+          key={item.id}
         >
           <Product item={item} key={item.id} />
         </Badge>

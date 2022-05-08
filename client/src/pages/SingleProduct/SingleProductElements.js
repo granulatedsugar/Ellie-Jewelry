@@ -69,7 +69,7 @@ export const FilterColor = styled.div`
   margin: 0px;
   direction: rtl;
   cursor: pointer;
-  &:active {
+  &:target {
     border: 0.5px solid #000;
   }
   &:hover {
