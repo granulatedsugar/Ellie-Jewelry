@@ -6,6 +6,7 @@ import authRouter from "./routes/auth.js";
 import cartRouter from "./routes/cartRouter.js";
 import orderRouter from "./routes/orderRouter.js";
 import productRouter from "./routes/productRouter.js";
+import stoneRouter from "./routes/stoneRouter.js";
 import cors from "cors";
 
 dotenv.config();
@@ -31,5 +32,6 @@ app.use(cors());
 app.use("/auth", authRouter);
 app.use("/users", userRouter);
 app.use("/products", productRouter);
+app.use("/stones", stoneRouter);
 app.use("/orders", orderRouter);
 app.use("/cart", cartRouter);
