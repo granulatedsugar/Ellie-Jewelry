@@ -47,6 +47,27 @@ const SingleProduct = () => {
   const [carat, setCarat] = useState("");
   const dispatch = useDispatch();
 
+  // Metal Calc
+  const goldPrice = 3500;
+  const grams = product.grams;
+  const initialPurity = purity / 24;
+  const totalPurity = initialPurity * goldPrice * grams * 1.15;
+
+  // Extras
+  const labor = product.labor;
+  const markup = product.markup / 100;
+  const packaging = product.packaging;
+
+  // StoneCalc
+  const stone = Number(carat) * 1 * 60000;
+
+  const total = stone + totalPurity + labor + packaging;
+  const markedUp = total * markup + total;
+
+  const totals = markedUp * quantity;
+  const roundedTotal = Number(totals.toFixed(2));
+  const price = roundedTotal;
+
   useEffect(() => {
     const getProduct = async () => {
       try {
@@ -70,23 +91,6 @@ const SingleProduct = () => {
     }
   };
 
-  // Metal Calc
-  const goldPrice = 3500;
-  const grams = product.grams;
-  const initialPurity = purity / 24;
-  const totalPurity = initialPurity * goldPrice * grams * 1.15;
-
-  // Extras
-  const labor = product.labor;
-  const markup = product.markup / 100;
-  const packaging = product.packaging;
-
-  // StoneCalc
-  const stone = Number(carat) * 1 * 60000;
-
-  const total = stone + totalPurity + labor + packaging;
-  const markedUp = total * markup + total;
-
   const handleSubmitToBag = () => {
     // Update cart
     dispatch(
@@ -100,14 +104,13 @@ const SingleProduct = () => {
         stoneShape,
         clarity,
         carat,
+        price,
         roundedTotal,
       })
     );
   };
 
-  const totals = markedUp * quantity;
-  const roundedTotal = Number(totals.toFixed(2));
-
+  console.log(price, "I have been clicke!");
   return (
     <Container>
       <Wrapper>
@@ -274,7 +277,7 @@ const SingleProduct = () => {
           </AddContainer>
           <PriceContainer>
             <FilterTitle>Total Price</FilterTitle>
-            <Price>{formatter.format(markedUp * quantity)}</Price>
+            <Price>{formatter.format(price)}</Price>
           </PriceContainer>
           {product.madeToOrder &&
           (!metalColor ||

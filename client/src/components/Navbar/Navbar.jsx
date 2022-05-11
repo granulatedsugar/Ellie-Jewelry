@@ -17,6 +17,7 @@ import LocalMallRoundedIcon from "@mui/icons-material/LocalMallRounded";
 import DrawerComponent from "../Drawer/Drawer";
 import { useTheme, useMediaQuery } from "@mui/material";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const theme = useTheme();
@@ -54,7 +55,9 @@ const Navbar = () => {
             <MenuItem href="login">SIGN IN</MenuItem>
             <MenuItem>
               <Badge badgeContent={quantity} color="error">
-                <LocalMallRoundedIcon color="action" />
+                <Link to="/cart">
+                  <LocalMallRoundedIcon color="action" to="/cart" />
+                </Link>
               </Badge>
             </MenuItem>
           </Right>

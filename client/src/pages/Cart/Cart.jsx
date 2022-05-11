@@ -19,7 +19,6 @@ import {
   ProductSize,
   PriceDetail,
   ProductQtyContainer,
-  ProductQty,
   ProductPrice,
   Filter,
   FilterTitle,
@@ -34,8 +33,16 @@ import {
 } from "./CartElements";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import Featured from "../../components/Featured/Featured";
+import { useSelector } from "react-redux";
 
 const Cart = () => {
+  const cart = useSelector((state) => state.cart);
+
+  const formatter = new Intl.NumberFormat("en-PH", {
+    style: "currency",
+    currency: "PHP",
+  });
+
   return (
     <Container>
       <Wrapper>
@@ -47,69 +54,39 @@ const Cart = () => {
         <Bottom>
           <Info>
             <Hr />
-            <Product>
-              <ProductDetail>
-                <Image src="https://media.tiffany.com/is/image/Tiffany/EcomItemL2/tiffany-true-engagement-ring-with-a-round-brilliant-diamond-68975425_1028237_ED_M.jpg" />
-                <Details>
-                  <ProductName>Round Brilliant Diamond</ProductName>
-                  <ProductId>
-                    <b>ID:</b> 60011685
-                  </ProductId>
-                  <ProductSize>
-                    <b>Size: </b> 6
-                  </ProductSize>
-                  <ProductColor color="#F7F7F7" />
-                </Details>
-              </ProductDetail>
-              <PriceDetail>
-                <ProductQtyContainer>
-                  <Filter>
-                    <FilterTitle>Qty</FilterTitle>
-                    <Select>
-                      <Option>0</Option>
-                      <Option>1</Option>
-                      <Option>2</Option>
-                      <Option>3</Option>
-                      <Option>4</Option>
-                      <Option>5</Option>
-                    </Select>
-                  </Filter>
-                </ProductQtyContainer>
-                <ProductPrice>$17,000.00</ProductPrice>
-              </PriceDetail>
-            </Product>
-            <Hr />
-            <Product>
-              <ProductDetail>
-                <Image src="https://media.tiffany.com/is/image/Tiffany/EcomItemL2/elsa-perettiopen-heart-pendant-60957401_1023440_ED.jpg" />
-                <Details>
-                  <ProductName>Open Heart Pendant</ProductName>
-                  <ProductId>
-                    <b>ID:</b> 60011681
-                  </ProductId>
-                  <ProductSize>
-                    <b>Size: </b> 4
-                  </ProductSize>
-                  <ProductColor color="#d4af37" />
-                </Details>
-              </ProductDetail>
-              <PriceDetail>
-                <ProductQtyContainer>
-                  <Filter>
-                    <FilterTitle>Qty</FilterTitle>
-                    <Select>
-                      <Option>0</Option>
-                      <Option>1</Option>
-                      <Option>2</Option>
-                      <Option>3</Option>
-                      <Option>4</Option>
-                      <Option>5</Option>
-                    </Select>
-                  </Filter>
-                </ProductQtyContainer>
-                <ProductPrice>$575.00</ProductPrice>
-              </PriceDetail>
-            </Product>
+            {cart.products.map((product) => (
+              <Product>
+                <ProductDetail>
+                  <Image src={product.img} />
+                  <Details>
+                    <ProductName>{product.name}</ProductName>
+                    <ProductId>
+                      <b>ID:</b> {product._id}
+                    </ProductId>
+                    <ProductSize>
+                      <b>Size: </b> {product.size}
+                    </ProductSize>
+                    <ProductColor color={product.metalColor} />
+                  </Details>
+                </ProductDetail>
+                <PriceDetail>
+                  <ProductQtyContainer>
+                    <Filter>
+                      <FilterTitle>Qty</FilterTitle>
+                      <Select>
+                        <Option>{product.quantity}</Option>
+                        <Option>1</Option>
+                        <Option>2</Option>
+                        <Option>3</Option>
+                        <Option>4</Option>
+                        <Option>5</Option>
+                      </Select>
+                    </Filter>
+                  </ProductQtyContainer>
+                  <ProductPrice>{formatter.format(product.price)}</ProductPrice>
+                </PriceDetail>
+              </Product>
+            ))}
             <Hr />
           </Info>
           <Summary>
@@ -117,7 +94,9 @@ const Cart = () => {
               <SummaryTitle>Order Summary</SummaryTitle>
               <SummaryItem>
                 <SummaryItemText>Subtotal</SummaryItemText>
-                <SummaryItemPrice>$17,575.00</SummaryItemPrice>
+                <SummaryItemPrice>
+                  {formatter.format(cart.total)}
+                </SummaryItemPrice>
               </SummaryItem>
               <SummaryItem>
                 <SummaryItemText>Shipping Fee</SummaryItemText>
@@ -129,7 +108,9 @@ const Cart = () => {
               </SummaryItem>
               <SummaryItem type="total">
                 <SummaryItemText type="total">Estimated Total</SummaryItemText>
-                <SummaryItemPrice type="total">$18,845.00</SummaryItemPrice>
+                <SummaryItemPrice type="total">
+                  {formatter.format(cart.total)}
+                </SummaryItemPrice>
               </SummaryItem>
               <ColorButton>CHECKOUT</ColorButton>
             </SummaryContainer>
