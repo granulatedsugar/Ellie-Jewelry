@@ -64,9 +64,7 @@ const SingleProduct = () => {
   const total = stone + totalPurity + labor + packaging;
   const markedUp = total * markup + total;
 
-  const totals = markedUp * quantity;
-  const roundedTotal = Number(totals.toFixed(2));
-  const price = roundedTotal;
+  const totalPrice = Number(markedUp.toFixed(2));
 
   useEffect(() => {
     const getProduct = async () => {
@@ -104,13 +102,11 @@ const SingleProduct = () => {
         stoneShape,
         clarity,
         carat,
-        price,
-        roundedTotal,
+        totalPrice,
       })
     );
   };
 
-  console.log(price, "I have been clicke!");
   return (
     <Container>
       <Wrapper>
@@ -277,7 +273,7 @@ const SingleProduct = () => {
           </AddContainer>
           <PriceContainer>
             <FilterTitle>Total Price</FilterTitle>
-            <Price>{formatter.format(price)}</Price>
+            <Price>{formatter.format(totalPrice * quantity)}</Price>
           </PriceContainer>
           {product.madeToOrder &&
           (!metalColor ||

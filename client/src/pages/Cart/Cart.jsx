@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Bottom,
   ColorButton,
@@ -33,15 +33,31 @@ import {
 } from "./CartElements";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import Featured from "../../components/Featured/Featured";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { adjustQuantity } from "../../redux/cartRedux";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
+
+  const [adjQuantity, setAdjQuantity] = useState();
+  const dispatch = useDispatch();
+
+  const onChangeQuantityHandle = (e) => {
+    setAdjQuantity(Number(e.target.value));
+
+    dispatch(
+      adjustQuantity({
+        adjQuantity,
+      })
+    );
+  };
 
   const formatter = new Intl.NumberFormat("en-PH", {
     style: "currency",
     currency: "PHP",
   });
+
+  // console.log(typeof basePrice, basePrice);
 
   return (
     <Container>
@@ -59,9 +75,9 @@ const Cart = () => {
                 <ProductDetail>
                   <Image src={product.img} />
                   <Details>
-                    <ProductName>{product.name}</ProductName>
+                    <ProductName>{product.title}</ProductName>
                     <ProductId>
-                      <b>ID:</b> {product._id}
+                      <b>ID:</b> {product.productSku}
                     </ProductId>
                     <ProductSize>
                       <b>Size: </b> {product.size}
@@ -73,8 +89,8 @@ const Cart = () => {
                   <ProductQtyContainer>
                     <Filter>
                       <FilterTitle>Qty</FilterTitle>
-                      <Select>
-                        <Option>{product.quantity}</Option>
+                      <Select onChange={onChangeQuantityHandle}>
+                        <Option default>{product.quantity}</Option>
                         <Option>1</Option>
                         <Option>2</Option>
                         <Option>3</Option>
@@ -83,7 +99,9 @@ const Cart = () => {
                       </Select>
                     </Filter>
                   </ProductQtyContainer>
-                  <ProductPrice>{formatter.format(product.price)}</ProductPrice>
+                  <ProductPrice>
+                    {formatter.format(product.totalPrice)}
+                  </ProductPrice>
                 </PriceDetail>
               </Product>
             ))}

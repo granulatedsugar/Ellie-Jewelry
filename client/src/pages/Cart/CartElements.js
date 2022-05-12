@@ -91,7 +91,7 @@ export const Details = styled.span`
 `;
 export const ProductName = styled.span`
   font-weight: 600;
-  font-size: 14px;
+  font-size: 18px;
 `;
 export const ProductId = styled.span`
   font-size: 14px;
