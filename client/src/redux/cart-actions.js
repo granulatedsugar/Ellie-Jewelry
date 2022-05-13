@@ -1,1 +1,1 @@
-import * as actionTypes from "./sh";
+import * as actionTypes from "red";

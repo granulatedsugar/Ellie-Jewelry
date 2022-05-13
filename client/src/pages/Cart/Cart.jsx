@@ -39,15 +39,15 @@ import { adjustQuantity } from "../../redux/cartRedux";
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
 
-  const [adjQuantity, setAdjQuantity] = useState();
+  const [quantity, setQuantity] = useState();
   const dispatch = useDispatch();
 
   const onChangeQuantityHandle = (e) => {
-    setAdjQuantity(Number(e.target.value));
+    setQuantity(Number(e.target.value));
 
     dispatch(
       adjustQuantity({
-        adjQuantity,
+        quantity,
       })
     );
   };
