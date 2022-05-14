@@ -11,11 +11,24 @@ const cartSlice = createSlice({
     addProduct: (state, action) => {
       state.quantity += 1; // cart
       state.products.push(action.payload);
-      state.total += action.payload.totalPrice * action.payload.quantity; // product
+      state.total += action.payload.totalPrice;
     },
     adjustQuantity: (state, action) => {
-      state.quantity += action.payload.quantity;
-      state.total += action.payload.totalPrice * action.payload.adjQuantity;
+      const newTotal = action.payload.quantity * action.payload.productPrice;
+      state.total = state.total - action.payload.previousPrice + newTotal;
+      const newCartItems = state.products.filter(
+        (product) => product._id !== action.payload.productId
+      );
+      const productItem = state.products.find(
+        (product) => product._id === action.payload.productId
+      );
+      const updatedItem = {
+        ...productItem,
+        quantity: action.payload.quantity,
+        totalPrice: newTotal,
+      };
+
+      state.products = [...newCartItems, updatedItem];
     },
   },
 });

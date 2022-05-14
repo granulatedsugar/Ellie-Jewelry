@@ -42,12 +42,17 @@ const Cart = () => {
   const [quantity, setQuantity] = useState();
   const dispatch = useDispatch();
 
-  const onChangeQuantityHandle = (e) => {
+  const onChangeQuantityHandle = (e, product) => {
     setQuantity(Number(e.target.value));
+
+    console.log(product);
 
     dispatch(
       adjustQuantity({
-        quantity,
+        quantity: Number(e.target.value),
+        productPrice: product.actualPrice,
+        productId: product._id,
+        previousPrice: product.totalPrice,
       })
     );
   };
@@ -89,8 +94,10 @@ const Cart = () => {
                   <ProductQtyContainer>
                     <Filter>
                       <FilterTitle>Qty</FilterTitle>
-                      <Select onChange={onChangeQuantityHandle}>
-                        <Option default>{product.quantity}</Option>
+                      <Select
+                        onChange={(e) => onChangeQuantityHandle(e, product)}
+                        defaultValue={product.quantity}
+                      >
                         <Option>1</Option>
                         <Option>2</Option>
                         <Option>3</Option>

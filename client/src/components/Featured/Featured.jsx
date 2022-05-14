@@ -16,7 +16,7 @@ const Featured = () => {
       } catch (err) {}
     };
     getProducts();
-  });
+  }, []);
 
   return (
     <Container>

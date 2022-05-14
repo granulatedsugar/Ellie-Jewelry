@@ -102,7 +102,8 @@ const SingleProduct = () => {
         stoneShape,
         clarity,
         carat,
-        totalPrice,
+        totalPrice: totalPrice * quantity,
+        actualPrice: totalPrice,
       })
     );
   };
