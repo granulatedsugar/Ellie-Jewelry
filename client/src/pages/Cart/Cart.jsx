@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Bottom,
   ColorButton,
@@ -35,18 +35,44 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import Featured from "../../components/Featured/Featured";
 import { useDispatch, useSelector } from "react-redux";
 import { adjustQuantity } from "../../redux/cartRedux";
+import StripeCheckout from "react-stripe-checkout";
+import { userRequest } from "../../requestMethods";
+import { useNavigate } from "react-router-dom";
+
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+
+const KEY =
+  "pk_test_51KvqZcLmaSzy3z1g2c2vPVjuWHHHDfwDSEDNrEdOWjnLLagldXYTfwoNyxkgs4T6QAfs2iuDOwBnjs3yiKAcc6f0006e1vTkDj";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
+  const [stripeToken, setStripeToken] = useState(null);
+  const history = useNavigate();
 
-  const [quantity, setQuantity] = useState();
+  const onToken = (token) => {
+    setStripeToken(token);
+  };
+
+  useEffect(() => {
+    const makeRequest = async () => {
+      try {
+        const res = await userRequest.post("/checkout/payment", {
+          tokenId: stripeToken.id,
+          amount: cart.total * 100,
+        });
+        history.push("/success", {
+          stripeData: res.data,
+          products: cart,
+        });
+      } catch {}
+    };
+    stripeToken && cart.total >= 1 && makeRequest();
+  }, [stripeToken, cart.total, history]);
+
   const dispatch = useDispatch();
 
   const onChangeQuantityHandle = (e, product) => {
-    setQuantity(Number(e.target.value));
-
-    console.log(product);
-
     dispatch(
       adjustQuantity({
         quantity: Number(e.target.value),
@@ -61,8 +87,6 @@ const Cart = () => {
     style: "currency",
     currency: "PHP",
   });
-
-  // console.log(typeof basePrice, basePrice);
 
   return (
     <Container>
@@ -137,7 +161,18 @@ const Cart = () => {
                   {formatter.format(cart.total)}
                 </SummaryItemPrice>
               </SummaryItem>
-              <ColorButton>CHECKOUT</ColorButton>
+              <StripeCheckout
+                name="Ellie Jewelry"
+                image="https://vectorlogos.net/wp-content/uploads/2019/08/Jewelry-Design-logo-1.jpg"
+                billingAddress
+                shippingAddress
+                description={`Your total is ${formatter.format(cart.total)}`}
+                amount={cart.total * 100}
+                token={onToken}
+                stripeKey={KEY}
+              >
+                <ColorButton>CHECKOUT</ColorButton>
+              </StripeCheckout>
             </SummaryContainer>
           </Summary>
         </Bottom>

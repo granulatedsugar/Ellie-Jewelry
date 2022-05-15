@@ -16,12 +16,15 @@ const cartSlice = createSlice({
     adjustQuantity: (state, action) => {
       const newTotal = action.payload.quantity * action.payload.productPrice;
       state.total = state.total - action.payload.previousPrice + newTotal;
+
       const newCartItems = state.products.filter(
         (product) => product._id !== action.payload.productId
       );
+
       const productItem = state.products.find(
         (product) => product._id === action.payload.productId
       );
+
       const updatedItem = {
         ...productItem,
         quantity: action.payload.quantity,

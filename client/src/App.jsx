@@ -16,6 +16,7 @@ import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 import Cart from "./pages/Cart/Cart";
 import ScrollToTop from "./ScrollToTop";
+import Success from "./pages/Success/Success";
 
 function App() {
   const user = false;
@@ -35,6 +36,7 @@ function App() {
           path="/register"
           element={user ? <Navigate to="/" /> : <Register />}
         />
+        <Route path="/success" element={<Success />} />
       </Routes>
       <Newsletter />
       <Footer />
