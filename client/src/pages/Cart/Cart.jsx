@@ -39,8 +39,9 @@ import StripeCheckout from "react-stripe-checkout";
 import { userRequest } from "../../requestMethods";
 import { useNavigate } from "react-router-dom";
 
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
+// import dotenv from "dotenv";
+
+// dotenv.config();
 
 const KEY =
   "pk_test_51KvqZcLmaSzy3z1g2c2vPVjuWHHHDfwDSEDNrEdOWjnLLagldXYTfwoNyxkgs4T6QAfs2iuDOwBnjs3yiKAcc6f0006e1vTkDj";
@@ -67,7 +68,7 @@ const Cart = () => {
         });
       } catch {}
     };
-    stripeToken && cart.total >= 1 && makeRequest();
+    stripeToken && makeRequest();
   }, [stripeToken, cart.total, history]);
 
   const dispatch = useDispatch();

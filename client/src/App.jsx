@@ -1,4 +1,5 @@
 import "./App.css";
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -17,6 +18,7 @@ import Login from "./pages/Login/Login";
 import Cart from "./pages/Cart/Cart";
 import ScrollToTop from "./ScrollToTop";
 import Success from "./pages/Success/Success";
+import CheckoutForm from "./pages/CheckoutForm/CheckoutForm";
 
 function App() {
   const user = false;
@@ -37,6 +39,8 @@ function App() {
           element={user ? <Navigate to="/" /> : <Register />}
         />
         <Route path="/success" element={<Success />} />
+
+        <Route path="/checkoutform" element={<CheckoutForm />} />
       </Routes>
       <Newsletter />
       <Footer />
