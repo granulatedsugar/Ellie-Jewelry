@@ -34,7 +34,7 @@ import {
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import Featured from "../../components/Featured/Featured";
 import { useDispatch, useSelector } from "react-redux";
-import { adjustQuantity } from "../../redux/cartRedux";
+import { adjustQuantity } from "../../redux/cartSlice";
 import StripeCheckout from "react-stripe-checkout";
 import { userRequest } from "../../requestMethods";
 import { useNavigate } from "react-router-dom";

@@ -34,15 +34,11 @@ router.post("/login", async (req, res) => {
       username: req.body.username,
     });
 
-    !user && res.status(401).json("Wrong User Name");
-
     const hashedPassword = CryptoJS.AES.decrypt(user.password, JWT_TOKEN); // Convert hash to regular pass
 
     const originalPassword = hashedPassword.toString(CryptoJS.enc.Utf8);
 
-    const inputPassword = req.body.password;
-
-    originalPassword != inputPassword && res.status(401).json("Wrong Password");
+    originalPassword !== req.body.password;
 
     const accessToken = jwt.sign(
       {
@@ -54,10 +50,10 @@ router.post("/login", async (req, res) => {
     );
 
     const { password, ...others } = user._doc;
+
     res.status(200).json({ ...others, accessToken });
   } catch (err) {
-    res.status(500).json(err);
+    res.status(401).json("Wrong Credentials!");
   }
 });
-
 export default router;

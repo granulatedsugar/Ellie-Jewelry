@@ -48,4 +48,13 @@ export const ColorButton = StyledMd(Button)`
     color: #000;
     background-color: #f1eee4;
   }
+
+  &:disabled {
+    color: #000;
+    background-color: #fff
+    border: 1px solid #000;
+
+  }
 `;
+
+export const Error = styled.span``;

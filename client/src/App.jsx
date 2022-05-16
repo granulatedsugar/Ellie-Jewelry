@@ -19,9 +19,10 @@ import Cart from "./pages/Cart/Cart";
 import ScrollToTop from "./ScrollToTop";
 import Success from "./pages/Success/Success";
 import CheckoutForm from "./pages/CheckoutForm/CheckoutForm";
+import { useSelector } from "react-redux";
 
 function App() {
-  const user = false;
+  const user = useSelector((state) => state.user.currentUser);
 
   return (
     <Router>

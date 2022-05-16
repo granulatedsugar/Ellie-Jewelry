@@ -23,6 +23,7 @@ const Navbar = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const quantity = useSelector((state) => state.cart.quantity);
+  const user = useSelector((state) => state.user.currentUser);
 
   return (
     <Container>
@@ -51,8 +52,14 @@ const Navbar = () => {
           </Right>
         ) : (
           <Right>
-            <MenuItem href="/register">REGISTER</MenuItem>
-            <MenuItem href="login">SIGN IN</MenuItem>
+            {user ? (
+              <MenuItem>{user.username.toUpperCase()}</MenuItem>
+            ) : (
+              <>
+                <MenuItem href="/register">REGISTER</MenuItem>
+                <MenuItem href="login">SIGN IN</MenuItem>
+              </>
+            )}
             <MenuItem>
               <Badge badgeContent={quantity} color="error">
                 <Link to="/cart">
