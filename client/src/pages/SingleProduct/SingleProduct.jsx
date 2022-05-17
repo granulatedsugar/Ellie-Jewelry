@@ -40,13 +40,6 @@ const SingleProduct = () => {
   const [selection, setSelection] = useState({});
   const [quantity, setQuantity] = useState(1);
   const [metalColor, setMetalColor] = useState("");
-
-  // const [purity, setPurity] = useState("");
-  // const [size, setSize] = useState("");
-  // const [centerStone, setCenterStone] = useState("");
-  // const [stoneShape, setStoneShape] = useState("");
-  // const [clarity, setClarity] = useState("");
-  // const [carat, setCarat] = useState("");
   const dispatch = useDispatch();
 
   const calcSelection = { ...selection };
@@ -66,18 +59,13 @@ const SingleProduct = () => {
 
   // StoneCalc
   const stone = !calcSelection.carat
-    ? product.carat?.[0] * 1 * 60000
+    ? (product.madeToOrder ? Number(product.carat?.[0]) * 1 * 60000 : 0)
     : Number(calcSelection.carat) * 1 * 60000;
 
   const total = stone + totalPurity + labor + packaging;
   const markedUp = total * markup + total;
 
   const totalPrice = Number(markedUp.toFixed(2));
-
-  console.log(calcSelection.carat, stone);
-  console.log(totalPurity);
-  console.log(product.purity?.[0]);
-  console.log(product.carat?.[0]);
 
   useEffect(() => {
     const getProduct = async () => {
@@ -89,9 +77,9 @@ const SingleProduct = () => {
     getProduct();
   }, [id]);
 
-  const formatter = new Intl.NumberFormat("en-PH", {
+  const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
-    currency: "PHP",
+    currency: "USD",
   });
 
   const handleQuantity = (type) => {

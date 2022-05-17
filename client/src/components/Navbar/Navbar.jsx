@@ -47,7 +47,9 @@ const Navbar = () => {
         {isMobile ? (
           <Right>
             <Badge badgeContent={quantity} color="error">
-              <LocalMallRoundedIcon color="action" />
+              <Link to="/cart">
+              <LocalMallRoundedIcon color="action" to="/cart"  />
+              </Link>
             </Badge>
           </Right>
         ) : (
