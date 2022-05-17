@@ -37,20 +37,26 @@ const SingleProduct = () => {
 
   const [product, setProduct] = useState({});
 
+  const [selection, setSelection] = useState({});
   const [quantity, setQuantity] = useState(1);
   const [metalColor, setMetalColor] = useState("");
-  const [purity, setPurity] = useState("");
-  const [size, setSize] = useState("");
-  const [centerStone, setCenterStone] = useState("");
-  const [stoneShape, setStoneShape] = useState("");
-  const [clarity, setClarity] = useState("");
-  const [carat, setCarat] = useState("");
+
+  // const [purity, setPurity] = useState("");
+  // const [size, setSize] = useState("");
+  // const [centerStone, setCenterStone] = useState("");
+  // const [stoneShape, setStoneShape] = useState("");
+  // const [clarity, setClarity] = useState("");
+  // const [carat, setCarat] = useState("");
   const dispatch = useDispatch();
+
+  const calcSelection = { ...selection };
 
   // Metal Calc
   const goldPrice = 3500;
   const grams = product.grams;
-  const initialPurity = purity / 24;
+  const initialPurity = !calcSelection.purity
+    ? product.purity?.[0] / 24
+    : Number(calcSelection.purity) / 24;
   const totalPurity = initialPurity * goldPrice * grams * 1.15;
 
   // Extras
@@ -59,12 +65,19 @@ const SingleProduct = () => {
   const packaging = product.packaging;
 
   // StoneCalc
-  const stone = Number(carat) * 1 * 60000;
+  const stone = !calcSelection.carat
+    ? product.carat?.[0] * 1 * 60000
+    : Number(calcSelection.carat) * 1 * 60000;
 
   const total = stone + totalPurity + labor + packaging;
   const markedUp = total * markup + total;
 
   const totalPrice = Number(markedUp.toFixed(2));
+
+  console.log(calcSelection.carat, stone);
+  console.log(totalPurity);
+  console.log(product.purity?.[0]);
+  console.log(product.carat?.[0]);
 
   useEffect(() => {
     const getProduct = async () => {
@@ -89,6 +102,12 @@ const SingleProduct = () => {
     }
   };
 
+  const handleChange = (e) => {
+    setSelection((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+  };
+
   const handleSubmitToBag = () => {
     // Update cart
     dispatch(
@@ -96,12 +115,7 @@ const SingleProduct = () => {
         ...product,
         quantity,
         metalColor,
-        purity,
-        size,
-        centerStone,
-        stoneShape,
-        clarity,
-        carat,
+        ...selection,
         totalPrice: totalPrice * quantity,
         actualPrice: totalPrice,
       })
@@ -156,10 +170,11 @@ const SingleProduct = () => {
                 </Filter>
                 <Filter>
                   <FilterTitle>Purity</FilterTitle>
-                  <Select onChange={(e) => setPurity(e.target.value)}>
-                    <Option disabled selected>
-                      Select
-                    </Option>
+                  <Select
+                    name="purity"
+                    defaultValue={product.purity?.[0]}
+                    onChange={handleChange}
+                  >
                     {product.purity?.map((p) => (
                       <Option key={p}>{p}</Option>
                     ))}
@@ -167,10 +182,11 @@ const SingleProduct = () => {
                 </Filter>
                 <Filter>
                   <FilterTitle>Size</FilterTitle>
-                  <Select onChange={(e) => setSize(e.target.value)}>
-                    <Option disabled selected>
-                      Select
-                    </Option>
+                  <Select
+                    name="size"
+                    defaultValue={"Select"}
+                    onChange={handleChange}
+                  >
                     {product.size?.map((size) => (
                       <Option key={size}>{size}</Option>
                     ))}
@@ -178,10 +194,11 @@ const SingleProduct = () => {
                 </Filter>
                 <Filter>
                   <FilterTitle>Stone</FilterTitle>
-                  <Select onChange={(e) => setCenterStone(e.target.value)}>
-                    <Option disabled selected>
-                      Select
-                    </Option>
+                  <Select
+                    name="centerStone"
+                    defaultValue={"Select"}
+                    onChange={handleChange}
+                  >
                     {product.centerStone?.map((cs) => (
                       <Option key={cs}>{cs}</Option>
                     ))}
@@ -189,10 +206,11 @@ const SingleProduct = () => {
                 </Filter>
                 <Filter>
                   <FilterTitle>Shape</FilterTitle>
-                  <Select onChange={(e) => setStoneShape(e.target.value)}>
-                    <Option disabled selected>
-                      Select
-                    </Option>
+                  <Select
+                    name="stoneShape"
+                    defaultValue={"Select"}
+                    onChange={handleChange}
+                  >
                     {product.stoneShape?.map((sh) => (
                       <Option key={sh}>{sh}</Option>
                     ))}
@@ -200,10 +218,11 @@ const SingleProduct = () => {
                 </Filter>
                 <Filter>
                   <FilterTitle>Clarity</FilterTitle>
-                  <Select onChange={(e) => setClarity(e.target.value)}>
-                    <Option disabled selected>
-                      Select
-                    </Option>
+                  <Select
+                    name="clarity"
+                    defaultValue={"Select"}
+                    onChange={handleChange}
+                  >
                     {product.clarity?.map((cl) => (
                       <Option key={cl}>{cl}</Option>
                     ))}
@@ -211,10 +230,12 @@ const SingleProduct = () => {
                 </Filter>
                 <Filter>
                   <FilterTitle>Carat</FilterTitle>
-                  <Select onChange={(e) => setCarat(e.target.value)}>
-                    <Option disabled selected>
-                      Select
-                    </Option>
+                  <Select
+                    name="carat"
+                    defaultValue={0}
+                    type={Number}
+                    onChange={handleChange}
+                  >
                     {product.carat?.map((cr) => (
                       <Option key={cr}>{cr}</Option>
                     ))}
@@ -235,10 +256,11 @@ const SingleProduct = () => {
                 </Filter>
                 <Filter>
                   <FilterTitle>Purity</FilterTitle>
-                  <Select onChange={(e) => setPurity(e.target.value)}>
-                    <Option disabled selected>
-                      Select
-                    </Option>
+                  <Select
+                    name="purity"
+                    value={product.purity?.[0]}
+                    onChange={handleChange}
+                  >
                     {product.purity?.map((p) => (
                       <Option key={p}>{p}</Option>
                     ))}
@@ -246,10 +268,11 @@ const SingleProduct = () => {
                 </Filter>
                 <Filter>
                   <FilterTitle>Size</FilterTitle>
-                  <Select onChange={(e) => setSize(e.target.value)}>
-                    <Option disabled selected>
-                      Select
-                    </Option>
+                  <Select
+                    name="size"
+                    defaultValue={"Select"}
+                    onChange={handleChange}
+                  >
                     {product.size?.map((size) => (
                       <Option key={size}>{size}</Option>
                     ))}
@@ -276,14 +299,7 @@ const SingleProduct = () => {
             <FilterTitle>Total Price</FilterTitle>
             <Price>{formatter.format(totalPrice * quantity)}</Price>
           </PriceContainer>
-          {product.madeToOrder &&
-          (!metalColor ||
-            !purity ||
-            !size ||
-            !centerStone ||
-            !stoneShape ||
-            !clarity ||
-            !carat) ? (
+          {product.madeToOrder && !selection ? (
             <>
               <ColorButton disabled sx={{ backgroundColor: "#fffefe" }}>
                 BUY NOW

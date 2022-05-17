@@ -33,6 +33,9 @@ const cartSlice = createSlice({
 
       state.products = [...newCartItems, updatedItem];
     },
+    // deleteItem: (state, action) => {
+    //   state.products.splice();
+    // },
   },
 });
 

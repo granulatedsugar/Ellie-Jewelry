@@ -8,7 +8,6 @@ import {
   Description,
   CardHeader,
   ContainerClip,
-  ClipMask,
 } from "./TopicElements";
 
 const TopicElements = ({ item }) => {
