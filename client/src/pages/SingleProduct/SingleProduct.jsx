@@ -164,6 +164,7 @@ const SingleProduct = () => {
                     <FilterColor
                       color={c}
                       key={c}
+                      defaultValue={product.metalColor?.[0]}
                       onClick={() => setMetalColor(c)}
                     />
                   ))}
@@ -184,7 +185,7 @@ const SingleProduct = () => {
                   <FilterTitle>Size</FilterTitle>
                   <Select
                     name="size"
-                    defaultValue={"Select"}
+                    defaultValue={product.size?.[0]}
                     onChange={handleChange}
                   >
                     {product.size?.map((size) => (
@@ -196,7 +197,7 @@ const SingleProduct = () => {
                   <FilterTitle>Stone</FilterTitle>
                   <Select
                     name="centerStone"
-                    defaultValue={"Select"}
+                    defaultValue={product.centerStone?.[0]}
                     onChange={handleChange}
                   >
                     {product.centerStone?.map((cs) => (
@@ -208,7 +209,7 @@ const SingleProduct = () => {
                   <FilterTitle>Shape</FilterTitle>
                   <Select
                     name="stoneShape"
-                    defaultValue={"Select"}
+                    defaultValue={product.stoneShape?.[0]}
                     onChange={handleChange}
                   >
                     {product.stoneShape?.map((sh) => (
@@ -220,7 +221,7 @@ const SingleProduct = () => {
                   <FilterTitle>Clarity</FilterTitle>
                   <Select
                     name="clarity"
-                    defaultValue={"Select"}
+                    defaultValue={product.clarity?.[0]}
                     onChange={handleChange}
                   >
                     {product.clarity?.map((cl) => (
@@ -232,8 +233,7 @@ const SingleProduct = () => {
                   <FilterTitle>Carat</FilterTitle>
                   <Select
                     name="carat"
-                    defaultValue={0}
-                    type={Number}
+                    defaultValue={product.carat?.[0]}
                     onChange={handleChange}
                   >
                     {product.carat?.map((cr) => (
@@ -258,7 +258,6 @@ const SingleProduct = () => {
                   <FilterTitle>Purity</FilterTitle>
                   <Select
                     name="purity"
-                    value={product.purity?.[0]}
                     onChange={handleChange}
                   >
                     {product.purity?.map((p) => (
@@ -270,7 +269,6 @@ const SingleProduct = () => {
                   <FilterTitle>Size</FilterTitle>
                   <Select
                     name="size"
-                    defaultValue={"Select"}
                     onChange={handleChange}
                   >
                     {product.size?.map((size) => (

@@ -21,7 +21,7 @@ export const Image = styled.img`
 `;
 export const InfoContainer = styled.div`
   flex: 4;
-  padding: 0px 50px;
+  padding: 0 50px;
   ${mobile({ padding: "0px 0px", width: "100%" })}
 `;
 export const Title = styled.h1`
@@ -29,14 +29,14 @@ export const Title = styled.h1`
   font-family: "Playfair Display", sans-serif;
 `;
 export const Description = styled.p`
-  margin: 20px 0px;
+  margin: 20px 0;
 `;
 
 export const PriceContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 0px;
+  padding: 10px 0;
 `;
 
 export const Price = styled.span`
@@ -46,7 +46,7 @@ export const Price = styled.span`
 
 export const FilterContainer = styled.div`
   border-top: 1px solid #000;
-  padding: 10px 0px;
+  padding: 10px 0;
 `;
 
 export const Filter = styled.div`
@@ -66,7 +66,7 @@ export const FilterColor = styled.div`
   border-radius: 50%;
   background-color: ${(props) => props.color};
   border: 1px solid #fff;
-  margin: 0px;
+  margin: 0;
   direction: rtl;
   cursor: pointer;
   &:target {
@@ -93,7 +93,7 @@ export const AddContainer = styled.div`
   justify-content: space-between;
   border-top: 1px solid #000;
   border-bottom: 1px solid #000;
-  padding: 15px 0px;
+  padding: 15px 0;
 `;
 
 export const QtyContainer = styled.div`
@@ -125,6 +125,6 @@ export const MfgType = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 0px;
+  padding: 5px 0;
   font-size: 12px;
 `;
