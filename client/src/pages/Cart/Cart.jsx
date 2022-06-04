@@ -105,6 +105,8 @@ const Cart = () => {
     );
   };
 
+  console.log(cart.products);
+
   return (
     <Container>
       <Wrapper>
@@ -182,18 +184,31 @@ const Cart = () => {
                   {formatter.format(cart.total)}
                 </SummaryItemPrice>
               </SummaryItem>
-              <StripeCheckout
-                name="Ellie Jewelry"
-                image="https://vectorlogos.net/wp-content/uploads/2019/08/Jewelry-Design-logo-1.jpg"
-                billingAddress
-                shippingAddress
-                description={`Your total is ${formatter.format(cart.total)}`}
-                amount={cart.total * 100}
-                token={onToken}
-                stripeKey={KEY}
-              >
-                <ColorButton>CHECKOUT</ColorButton>
-              </StripeCheckout>
+              {!cart.products.length ? (
+                <ColorButton
+                  disabled={true}
+                  style={{
+                    color: "#000",
+                    background: "#fff",
+                    textDecoration: "line-through",
+                  }}
+                >
+                  CHECKOUT
+                </ColorButton>
+              ) : (
+                <StripeCheckout
+                  name="Ellie Jewelry"
+                  image="https://vectorlogos.net/wp-content/uploads/2019/08/Jewelry-Design-logo-1.jpg"
+                  billingAddress
+                  shippingAddress
+                  description={`Your total is ${formatter.format(cart.total)}`}
+                  amount={cart.total * 100}
+                  token={onToken}
+                  stripeKey={KEY}
+                >
+                  <ColorButton>CHECKOUT</ColorButton>
+                </StripeCheckout>
+              )}
             </SummaryContainer>
           </Summary>
         </Bottom>
