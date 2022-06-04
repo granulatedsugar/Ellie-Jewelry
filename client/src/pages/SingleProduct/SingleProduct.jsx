@@ -59,7 +59,9 @@ const SingleProduct = () => {
 
   // StoneCalc
   const stone = !calcSelection.carat
-    ? (product.madeToOrder ? Number(product.carat?.[0]) * 1 * 60000 : 0)
+    ? product.madeToOrder
+      ? Number(product.carat?.[0]) * 1 * 60000
+      : 0
     : Number(calcSelection.carat) * 1 * 60000;
 
   const total = stone + totalPurity + labor + packaging;
@@ -77,6 +79,8 @@ const SingleProduct = () => {
     getProduct();
   }, [id]);
 
+  console.log(product);
+
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
@@ -86,7 +90,7 @@ const SingleProduct = () => {
     if (type === "dec") {
       quantity > 1 && setQuantity(quantity - 1);
     } else {
-      setQuantity(quantity + 1);
+      quantity <= 4 && setQuantity(quantity + 1);
     }
   };
 
@@ -244,10 +248,7 @@ const SingleProduct = () => {
                 </Filter>
                 <Filter>
                   <FilterTitle>Purity</FilterTitle>
-                  <Select
-                    name="purity"
-                    onChange={handleChange}
-                  >
+                  <Select name="purity" onChange={handleChange}>
                     {product.purity?.map((p) => (
                       <Option key={p}>{p}</Option>
                     ))}
@@ -255,10 +256,7 @@ const SingleProduct = () => {
                 </Filter>
                 <Filter>
                   <FilterTitle>Size</FilterTitle>
-                  <Select
-                    name="size"
-                    onChange={handleChange}
-                  >
+                  <Select name="size" onChange={handleChange}>
                     {product.size?.map((size) => (
                       <Option key={size}>{size}</Option>
                     ))}

@@ -34,10 +34,11 @@ import {
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import Featured from "../../components/Featured/Featured";
 import { useDispatch, useSelector } from "react-redux";
-import { adjustQuantity } from "../../redux/cartSlice";
+import { adjustQuantity, reset, removeProduct } from "../../redux/cartSlice";
 import StripeCheckout from "react-stripe-checkout";
 import { userRequest } from "../../requestMethods";
 import { useNavigate } from "react-router-dom";
+import CloseIcon from "@mui/icons-material/Close";
 
 // import dotenv from "dotenv";
 
@@ -84,10 +85,25 @@ const Cart = () => {
     );
   };
 
+  const clearPage = () => {
+    dispatch(reset());
+  };
+
   const formatter = new Intl.NumberFormat("en-PH", {
     style: "currency",
     currency: "PHP",
   });
+
+  const removeFromCart = (e, product) => {
+    dispatch(
+      removeProduct({
+        quantity: Number(e.target.value),
+        productPrice: product.actualPrice,
+        productId: product._id,
+        previousPrice: product.totalPrice,
+      })
+    );
+  };
 
   return (
     <Container>
@@ -95,12 +111,15 @@ const Cart = () => {
         <Top>
           <ChevronLeftIcon style={{ fontSize: "14px" }} />
           <Link>Continue Shopping</Link>
+          <ColorButton onClick={clearPage}>
+            CLEAR CART FOR TESTING ONLY!
+          </ColorButton>
         </Top>
         <Title>Shopping Bag</Title>
         <Bottom>
           <Info>
             <Hr />
-            {cart.products.map((product) => (
+            {cart.products?.map((product) => (
               <Product>
                 <ProductDetail>
                   <Image src={product.img} />
@@ -116,6 +135,7 @@ const Cart = () => {
                   </Details>
                 </ProductDetail>
                 <PriceDetail>
+                  <CloseIcon onClick={(e) => removeFromCart(e, product)} />
                   <ProductQtyContainer>
                     <Filter>
                       <FilterTitle>Qty</FilterTitle>
